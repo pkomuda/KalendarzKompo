@@ -2,6 +2,8 @@ package com.itpk.kalendarz.logika;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import com.itpk.kalendarz.gui.Kalendarz;
+
 public class Wydarzenie
 {
     private String opis;
@@ -179,11 +181,11 @@ public class Wydarzenie
     public String toString()
     {
     	if(czyGodzina&&czyMiejsce)
-    		return this.data.get(Calendar.HOUR_OF_DAY)+":"+this.data.get(Calendar.MINUTE)+"\n"+opis+" - "+miejsce;
+    		return Kalendarz.dodajZero(getGodzina())+":"+Kalendarz.dodajZero(getMinuta())+"\n"+opis+" - "+miejsce;
     	else if(czyMiejsce)
     		return opis+" - "+miejsce;
     	else if(czyGodzina)
-    		return this.data.get(Calendar.HOUR_OF_DAY)+":"+this.data.get(Calendar.MINUTE)+"\n"+opis;
+    		return Kalendarz.dodajZero(getGodzina())+":"+Kalendarz.dodajZero(getMinuta())+"\n"+opis;
     	else return opis;
 			
     }
