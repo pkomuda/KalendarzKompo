@@ -79,7 +79,7 @@ public class OkienkoWydarzenia extends JFrame
 				if (e.getClickCount() == 2)
 				{
 					Wydarzenie w = glowneOkno.getDni().getDzien(obecna).getLista().get(list.getSelectedIndex());
-					DodanieWydarzenia edycja = new DodanieWydarzenia(getThis(), listModel, true);
+					UstawieniaWydarzenia edycja = new EdycjaWydarzenia(getThis(), listModel);
 					edycja.setLocationRelativeTo(edycja);
 					edycja.setVisible(true);
 					edycja.setOpis(w.getOpis());
@@ -104,21 +104,9 @@ public class OkienkoWydarzenia extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				DodanieWydarzenia okienko = new DodanieWydarzenia(getThis(), listModel, false);
+				UstawieniaWydarzenia okienko = new DodanieWydarzenia(getThis(), listModel);
 				okienko.setLocationRelativeTo(okienko);
 				okienko.setVisible(true);
-//				glowneOkno.getDni().dodajWydarzenie("test", "test", obecna);
-//				if(glowneOkno.getDni().getDzien(obecna)!=null)
-//				{
-//					glowneOkno.getDni().getDzien(obecna).getLista().sort(new ComparatorPoDacie());
-//					listModel.clear();
-//					for (Wydarzenie w : glowneOkno.getDni().getDzien(obecna).getLista())
-//					{
-//						listModel.addElement(w.toString());
-////						System.out.println(w);
-//					}
-//					list.setModel(listModel);
-//				}
 			}
 		});
 		panelPrzyciski.add(dodajPrzycisk);
