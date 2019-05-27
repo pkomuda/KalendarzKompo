@@ -19,6 +19,7 @@ import com.toedter.calendar.JCalendar;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.SwingConstants;
 
 public class Kalendarz extends JFrame
 {
@@ -28,6 +29,11 @@ public class Kalendarz extends JFrame
 	private int dzienMiesiaca;
 	private Dni dni;
 	private JButton info;
+	private JButton eksport;
+	private JButton btnNewButton;
+	private JButton btnNewButton_1;
+	private JPanel panel2;
+	private JPanel panel1;
 
 	public static void main(String[] args)
 	{	
@@ -78,16 +84,26 @@ public class Kalendarz extends JFrame
 		});
 		panel.add(calendar, BorderLayout.CENTER);
 		
+		panel2 = new JPanel();
+		panel2.setLayout(new BorderLayout(0, 0));
+		calendar.getYearChooser().add(panel2, BorderLayout.NORTH);
+		
+		eksport = new JButton("Wyeksportuj kalendarz");
+		panel2.add(eksport, BorderLayout.EAST);
+		
+		panel1 = new JPanel();
+		calendar.getMonthChooser().add(panel1, BorderLayout.NORTH);
+		
 		info = new JButton("O programie");
+		panel1.add(info);
 		info.addMouseListener(new MouseAdapter()
 		{
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				JOptionPane.showMessageDialog(null, "Autorzy:\nIdalia Tybińkowska 216908\nPrzemysław Komuda 216802", "", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, Dni.oProgramie(), "", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		calendar.getYearChooser().add(info, BorderLayout.EAST);
 	}
 	
 	public Calendar getData()

@@ -84,4 +84,9 @@ public class Dni implements Kolekcja<Dzien>
                 "listaDni=" + listaDni +
                 '}';
     }
+    
+    public static String oProgramie()
+    {
+    	return "Autorzy:\nIdalia Tybińkowska 216908\nPrzemysław Komuda 216802";
+    }
 }

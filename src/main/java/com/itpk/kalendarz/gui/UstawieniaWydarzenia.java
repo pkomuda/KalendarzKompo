@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
@@ -27,6 +28,9 @@ public abstract class UstawieniaWydarzenia extends JFrame{
 	private JFormattedTextField poleGodzina;
 	private JFormattedTextField poleMinuta;
 	private JButton przyciskZatwierdz;
+	private JRadioButton wyborGodzina;
+	private JRadioButton wyborDzien;
+	private JRadioButton wyborTydzien;
 	
 	public UstawieniaWydarzenia(OkienkoWydarzenia glowneOkno, DefaultListModel<String> listModel)
 	{
@@ -102,20 +106,25 @@ public abstract class UstawieniaWydarzenia extends JFrame{
 		sl_panel.putConstraint(SpringLayout.WEST, lblPrzypomnienie, 0, SpringLayout.WEST, lblOpis);
 		panel.add(lblPrzypomnienie);
 		
-		JRadioButton wyborGodzina = new JRadioButton("godzina przed");
+		wyborGodzina = new JRadioButton("godzina przed");
 		sl_panel.putConstraint(SpringLayout.NORTH, wyborGodzina, 16, SpringLayout.SOUTH, lblPrzypomnienie);
 		sl_panel.putConstraint(SpringLayout.WEST, wyborGodzina, 0, SpringLayout.WEST, lblOpis);
 		panel.add(wyborGodzina);
 		
-		JRadioButton wyborDzien = new JRadioButton("dzień przed");
+		wyborDzien = new JRadioButton("dzień przed");
 		sl_panel.putConstraint(SpringLayout.NORTH, wyborDzien, 0, SpringLayout.NORTH, wyborGodzina);
 		sl_panel.putConstraint(SpringLayout.WEST, wyborDzien, 0, SpringLayout.WEST, lblMinuta);
 		panel.add(wyborDzien);
 		
-		JRadioButton wyborTydzien = new JRadioButton("tydzień przed");
+		wyborTydzien = new JRadioButton("tydzień przed");
 		sl_panel.putConstraint(SpringLayout.NORTH, wyborTydzien, 0, SpringLayout.NORTH, wyborGodzina);
 		sl_panel.putConstraint(SpringLayout.WEST, wyborTydzien, 19, SpringLayout.EAST, wyborDzien);
 		panel.add(wyborTydzien);
+		
+		ButtonGroup grupa = new ButtonGroup();
+		grupa.add(wyborGodzina);
+		grupa.add(wyborDzien);
+		grupa.add(wyborTydzien);
 		
 		przyciskZatwierdz = new JButton("Zatwierdź");
 		
