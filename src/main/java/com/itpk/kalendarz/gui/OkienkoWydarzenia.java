@@ -51,7 +51,7 @@ public class OkienkoWydarzenia extends JFrame
 		/***********Naglowek*****************/
 		naglowek = new JLabel("naglowek");
 		naglowek.setFont(new Font("Lucida Grande", Font.BOLD, 24));
-        naglowek.setText("Wydarzenia z dnia " + glowneOkno.getDzienMiesiaca() + "." + (glowneOkno.getData().get(Calendar.MONTH) + 1) + "." + glowneOkno.getData().get(Calendar.YEAR));
+        naglowek.setText("Wydarzenia z dnia " + Kalendarz.dodajZero(glowneOkno.getDzienMiesiaca()) + "." + Kalendarz.dodajZero(glowneOkno.getData().get(Calendar.MONTH)+1) + "." + glowneOkno.getData().get(Calendar.YEAR));
 		panel.add(naglowek, BorderLayout.NORTH);
 		
 		obecna = new GregorianCalendar();

@@ -124,6 +124,37 @@ public class Wydarzenie
     	this.czyGodzina = czyGodzina;
     }
     
+    public int getRok()
+    {
+    	return data.get(Calendar.YEAR);
+    }
+    
+    public void setRok(int rok)
+    {
+    	data.set(Calendar.YEAR, rok);
+    }
+    
+    // Trzeba dodac 1 !!!
+    public int getMiesiac()
+    {
+    	return data.get(Calendar.MONTH);
+    }
+    
+    public void setMiesiac(int miesiac)
+    {
+    	data.set(Calendar.MONTH, miesiac);
+    }
+    
+    public int getDzien()
+    {
+    	return data.get(Calendar.DAY_OF_MONTH);
+    }
+    
+    public void setDzien(int dzien)
+    {
+    	data.set(Calendar.DAY_OF_MONTH, dzien);
+    }
+    
     public int getGodzina()
 	{
 		return data.get(Calendar.HOUR_OF_DAY);

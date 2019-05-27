@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.itpk.kalendarz.dane.ZapisDoICS;
 import com.itpk.kalendarz.logika.Dni;
 import com.itpk.kalendarz.logika.Dzien;
 import com.itpk.kalendarz.logika.Wydarzenie;
@@ -29,6 +30,12 @@ public class Kalendarz extends JFrame
 
 	public static void main(String[] args)
 	{
+		Wydarzenie wydarzenie = new Wydarzenie("Spotkanie", "Łódź", new GregorianCalendar(), 12, 30);
+		wydarzenie.setDzien(15);
+		
+		ZapisDoICS zapisDoICS = new ZapisDoICS();
+		zapisDoICS.zapisz(wydarzenie, "spotkanie");
+		
 		EventQueue.invokeLater(new Runnable()
 		{
 			public void run()
@@ -101,5 +108,10 @@ public class Kalendarz extends JFrame
     public Dni getDni()
     {
         return dni;
+    }
+    
+    public static String dodajZero(int liczba)
+    {
+    	return String.format("%02d", liczba);
     }
 }
