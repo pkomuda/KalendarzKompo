@@ -19,6 +19,8 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -30,6 +32,7 @@ public class DodanieWydarzenia extends JFrame {
 	private JTextField poleMiejsce;
 	private JFormattedTextField poleGodzina;
 	private JFormattedTextField poleMinuta;
+	private JButton przyciskZatwierdz;
 	
 	public DodanieWydarzenia(OkienkoWydarzenia glowneOkno, DefaultListModel listModel, boolean czyEdycja)
 	{
@@ -120,7 +123,7 @@ public class DodanieWydarzenia extends JFrame {
 		sl_panel.putConstraint(SpringLayout.WEST, wyborTydzien, 19, SpringLayout.EAST, wyborDzien);
 		panel.add(wyborTydzien);
 		
-		JButton przyciskZatwierdz = new JButton("Zatwierdź");
+		przyciskZatwierdz = new JButton("Zatwierdź");
 		if (!czyEdycja)
 		{
 			przyciskZatwierdz.addMouseListener(new MouseAdapter()
@@ -211,6 +214,31 @@ public class DodanieWydarzenia extends JFrame {
 		panel.add(przyciskZatwierdz);
 	}
 	
+	public JTextField getPoleOpis()
+	{
+		return poleOpis;
+	}
+
+	public JTextField getPoleMiejsce()
+	{
+		return poleMiejsce;
+	}
+
+	public JFormattedTextField getPoleGodzina()
+	{
+		return poleGodzina;
+	}
+
+	public JFormattedTextField getPoleMinuta()
+	{
+		return poleMinuta;
+	}
+	
+	public JButton getPrzyciskZatwierdz()
+	{
+		return przyciskZatwierdz;
+	}
+
 	public void setOpis(String opis)
 	{
 		poleOpis.setText(opis);

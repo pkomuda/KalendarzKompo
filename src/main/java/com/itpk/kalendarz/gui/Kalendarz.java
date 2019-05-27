@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -13,6 +14,9 @@ import com.itpk.kalendarz.logika.Dni;
 import com.itpk.kalendarz.logika.Dzien;
 import com.itpk.kalendarz.logika.Wydarzenie;
 import com.toedter.calendar.JCalendar;
+import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Kalendarz extends JFrame
 {
@@ -21,6 +25,7 @@ public class Kalendarz extends JFrame
 	private Calendar data;
 	private int dzienMiesiaca;
 	private Dni dni;
+	private JButton info;
 
 	public static void main(String[] args)
 	{
@@ -70,6 +75,17 @@ public class Kalendarz extends JFrame
             okienko.setVisible(true);
 		});
 		panel.add(calendar, BorderLayout.CENTER);
+		
+		info = new JButton("O programie");
+		info.addMouseListener(new MouseAdapter()
+		{
+			@Override
+			public void mouseClicked(MouseEvent e)
+			{
+				JOptionPane.showMessageDialog(null, "Autorzy:\nIdalia Tybińkowska 216908\nPrzemysław Komuda 216802", "", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		calendar.getYearChooser().add(info, BorderLayout.EAST);
 	}
 	
 	public Calendar getData()

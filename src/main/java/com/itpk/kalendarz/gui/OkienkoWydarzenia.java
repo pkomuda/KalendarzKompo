@@ -20,6 +20,8 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import java.awt.Font;
 import javax.swing.JButton;
+
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -78,7 +80,6 @@ public class OkienkoWydarzenia extends JFrame
 				{
 					Wydarzenie w = glowneOkno.getDni().getDzien(obecna).getLista().get(list.getSelectedIndex());
 					DodanieWydarzenia edycja = new DodanieWydarzenia(getThis(), listModel, true);
-					edycja.setTitle("Edycja wydarzenia");
 					edycja.setLocationRelativeTo(edycja);
 					edycja.setVisible(true);
 					edycja.setOpis(w.getOpis());
