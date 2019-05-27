@@ -13,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 import com.itpk.kalendarz.dane.ZapisDoICS;
 import com.itpk.kalendarz.logika.Dni;
 import com.itpk.kalendarz.logika.Dzien;
+import com.itpk.kalendarz.logika.Przypomnienie;
 import com.itpk.kalendarz.logika.Wydarzenie;
 import com.toedter.calendar.JCalendar;
 import javax.swing.JButton;
@@ -29,13 +30,7 @@ public class Kalendarz extends JFrame
 	private JButton info;
 
 	public static void main(String[] args)
-	{
-		Wydarzenie wydarzenie = new Wydarzenie("Spotkanie", "Łódź", new GregorianCalendar(), 12, 30);
-		wydarzenie.setDzien(15);
-		
-		ZapisDoICS zapisDoICS = new ZapisDoICS();
-		zapisDoICS.zapisz(wydarzenie, "spotkanie");
-		
+	{	
 		EventQueue.invokeLater(new Runnable()
 		{
 			public void run()
