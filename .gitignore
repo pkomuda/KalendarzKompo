@@ -30,3 +30,5 @@ KalendarzKompo.iml
 .project
 .settings/
 target/
+
+*.ics
