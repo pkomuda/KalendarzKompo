@@ -17,7 +17,6 @@ import com.itpk.kalendarz.logika.Dzien;
 import com.itpk.kalendarz.logika.Przypomnienie;
 import com.itpk.kalendarz.logika.Wydarzenie;
 import com.toedter.calendar.JCalendar;
-import javax.swing.JButton;
 import javax.swing.JColorChooser;
 
 import java.awt.event.MouseAdapter;
@@ -33,8 +32,6 @@ public class Kalendarz extends JFrame
 	private Calendar data;
 	private int dzienMiesiaca;
 	private Dni dni;
-	private JButton btnNewButton;
-	private JButton btnNewButton_1;
 	private JMenuBar menuBar;
 	private JMenu plik;
 	private JMenuItem importuj;
@@ -84,12 +81,13 @@ public class Kalendarz extends JFrame
 		ustawienia = new JMenu("Ustawienia");
 		menuBar.add(ustawienia);
 		
-		kolory = new JMenuItem("Kolory");
-		kolory.addActionListener(e ->
+		kolory = new JMenu("Kolory");
+		JColorChooser wyborKoloru = new JColorChooser(new Color(238,238,238));
+		wyborKoloru.getSelectionModel().addChangeListener(e ->
 		{
-			Color c = JColorChooser.showDialog(null, "Wybór koloru tła", new Color(238,238,238));
-			calendar.getDayChooser().getDayPanel().setBackground(c);
-		});
+			calendar.getDayChooser().getDayPanel().setBackground(wyborKoloru.getColor());
+        });
+		kolory.add(wyborKoloru.getChooserPanels()[1]);
 		ustawienia.add(kolory);
 		
 		info = new JMenu("O programie");
@@ -117,9 +115,9 @@ public class Kalendarz extends JFrame
 		d1.dodaj(w1);
 		d2.dodaj(w2);
 		d3.dodaj(w3);
-        dni.dodaj(d1);
-        dni.dodaj(d2);
-        dni.dodaj(d3);
+//        dni.dodaj(d1);
+//        dni.dodaj(d2);
+//        dni.dodaj(d3);
         Alarmy alarmy = new AlarmyGraficzne(dni);
         alarmy.powiadom();
         
