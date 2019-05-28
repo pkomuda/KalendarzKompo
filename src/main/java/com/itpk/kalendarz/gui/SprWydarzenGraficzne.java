@@ -3,9 +3,11 @@ package com.itpk.kalendarz.gui;
 import java.awt.Toolkit;
 import java.util.Calendar;
 
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.JOptionPane;
 
 import com.itpk.kalendarz.logika.Dni;
+import com.itpk.kalendarz.logika.Dzwieki;
 import com.itpk.kalendarz.logika.SprWydarzen;
 import com.itpk.kalendarz.logika.Wydarzenie;
 
@@ -27,7 +29,14 @@ public class SprWydarzenGraficzne extends SprWydarzen
 		{
 			e.printStackTrace();
 		}
-		Toolkit.getDefaultToolkit().beep();
+		try
+		{
+			Dzwieki.ton(2000, 300);
+		}
+		catch (LineUnavailableException e)
+		{
+			e.printStackTrace();
+		}
 		JOptionPane.showMessageDialog(null, w.szczegolyWydarzenia(), "Alarm", JOptionPane.INFORMATION_MESSAGE);
 	}
 }

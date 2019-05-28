@@ -232,7 +232,7 @@ public class Wydarzenie
     		return "Jutro o "+ toString();
     		
     	case GODZINA_PRZED:
-    		return "Za godzine o "+ toString();
+    		return "Dzisiaj o "+ toString();
     		
     	case TYDZIEN_PRZED:
     		return "Za tydzien o "+ toString();
