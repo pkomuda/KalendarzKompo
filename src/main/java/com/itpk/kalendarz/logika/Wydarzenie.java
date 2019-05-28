@@ -22,7 +22,11 @@ public class Wydarzenie
         this.data = new GregorianCalendar(data.get(Calendar.YEAR),data.get(Calendar.MONTH),data.get(Calendar.DAY_OF_MONTH),0,0);
         this.czyGodzina=false;
         this.przypomnienie = Przypomnienie.DZIEN_PRZED;
-        this.czyPowiadomiono = false;
+        
+        Calendar teraz=new GregorianCalendar();
+        if(this.data.compareTo(teraz)<=0)
+        	this.czyPowiadomiono = true;
+        else this.czyPowiadomiono = false;
     }
     
     public Wydarzenie(String opis, String miejsce, Calendar data,int godzina, int minuta,Przypomnienie przypomnienie)
@@ -35,7 +39,11 @@ public class Wydarzenie
         this.data.set(Calendar.HOUR_OF_DAY, godzina);
         this.data.set(Calendar.MINUTE, minuta);
         this.przypomnienie = przypomnienie;
-        this.czyPowiadomiono = false;
+        
+        Calendar teraz=new GregorianCalendar();
+        if(this.data.compareTo(teraz)<=0)
+        	this.czyPowiadomiono = true;
+        else this.czyPowiadomiono = false;
     }
     
     public Wydarzenie(String opis, String miejsce, Calendar data,int godzina, int minuta)
@@ -48,7 +56,11 @@ public class Wydarzenie
         this.data.set(Calendar.HOUR_OF_DAY, godzina);
         this.data.set(Calendar.MINUTE, minuta);
         this.przypomnienie = Przypomnienie.DZIEN_PRZED;
-        this.czyPowiadomiono = false;
+        
+        Calendar teraz=new GregorianCalendar();
+        if(this.data.compareTo(teraz)<=0)
+        	this.czyPowiadomiono = true;
+        else this.czyPowiadomiono = false;
     }
 
     public Wydarzenie()
@@ -59,7 +71,11 @@ public class Wydarzenie
         this.data = new GregorianCalendar();
         this.czyGodzina=false;
         this.przypomnienie = Przypomnienie.DZIEN_PRZED;
-        this.czyPowiadomiono = false;
+        
+        Calendar teraz=new GregorianCalendar();
+        if(this.data.compareTo(teraz)<=0)
+        	this.czyPowiadomiono = true;
+        else this.czyPowiadomiono = false;
     }
 
     /*
@@ -103,6 +119,11 @@ public class Wydarzenie
     public Calendar getData()
     {
         return data;
+    }
+    
+    public int[] getDataTab()
+    {
+        return new int[]{data.get(Calendar.YEAR), data.get(Calendar.MONTH), data.get(Calendar.DAY_OF_MONTH)};
     }
 
     public void setData(Calendar data)

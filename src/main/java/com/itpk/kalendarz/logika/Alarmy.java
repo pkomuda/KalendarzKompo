@@ -40,9 +40,9 @@ public class Alarmy
 	
 	public void powiadom()
 	{
-		timerSprWydarzenia.schedule(new SprawdzanieWydarzenZadanie(dni,zaGodzine), teraz.getTime(), 10000);
-		timerSprWydarzenia.schedule(new SprawdzanieWydarzenZadanie(dni,jutro), teraz.getTime(), 10000);
-		timerSprWydarzenia.schedule(new SprawdzanieWydarzenZadanie(dni,zaTydzien), teraz.getTime(), 10000);
+		timerSprWydarzenia.schedule(new SprawdzanieWydarzenZadanie(dni,zaGodzine,0), teraz.getTime(), 10000);
+		timerSprWydarzenia.schedule(new SprawdzanieWydarzenZadanie(dni,jutro,1), teraz.getTime(), 10000);
+		timerSprWydarzenia.schedule(new SprawdzanieWydarzenZadanie(dni,zaTydzien,7), teraz.getTime(), 10000);
 	}
 	
 	private void setCzasNaZero(Calendar kiedy)

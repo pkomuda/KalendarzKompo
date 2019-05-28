@@ -53,17 +53,25 @@ public class Dzien implements Kolekcja<Wydarzenie>, Comparable<Dzien>
     @Override
     public boolean dodaj(Wydarzenie w)
     {
-        return this.wydarzenia.add(w);
+    	if(Arrays.equals(getData(), w.getDataTab()))
+    		return this.wydarzenia.add(w);
+    	else return false;
     }
     
     public boolean dodaj(String opis, String miejsce, Calendar obecna,int godzina, int minuta)
     {
-        return this.wydarzenia.add(new Wydarzenie(opis,miejsce,obecna,godzina,minuta));
+    	Wydarzenie w=new Wydarzenie(opis,miejsce,obecna,godzina,minuta);
+    	if(Arrays.equals(getData(), w.getDataTab()))
+    		return this.wydarzenia.add(w);
+    	else return false;
     }
     
     public boolean dodaj(String opis, String miejsce, Calendar obecna)
     {
-        return this.wydarzenia.add(new Wydarzenie(opis,miejsce,obecna));
+    	Wydarzenie w=new Wydarzenie(opis,miejsce,obecna);
+    	if(Arrays.equals(getData(), w.getDataTab()))
+    		return this.wydarzenia.add(w);
+    	else return false;
     }
 
     @Override
