@@ -111,7 +111,7 @@ public class Kalendarz extends JFrame
 		Dzien d1 = new Dzien(28, 4, 2019);
 		Dzien d2 = new Dzien(29, 4, 2019);
 		Dzien d3 = new Dzien(4, 5, 2019);
-		Wydarzenie w1 = new Wydarzenie("Spotkanie - za godzine", "Łódź", new GregorianCalendar(2019, 4, 28),20,00,Przypomnienie.GODZINA_PRZED);
+		Wydarzenie w1 = new Wydarzenie("Spotkanie - za godzine", "Łódź", new GregorianCalendar(2019, 4, 28),20,30,Przypomnienie.GODZINA_PRZED);
 		Wydarzenie w2 = new Wydarzenie("Spotkanie - jutro", "Łódź", new GregorianCalendar(2019, 4, 29),23, 13);
 		Wydarzenie w3 = new Wydarzenie("Spotkanie - za tydzien", "Łódź", new GregorianCalendar(2019,5,4),12,00,Przypomnienie.TYDZIEN_PRZED);
 		d1.dodaj(w1);
@@ -120,7 +120,7 @@ public class Kalendarz extends JFrame
         dni.dodaj(d1);
         dni.dodaj(d2);
         dni.dodaj(d3);
-        Alarmy alarmy = new Alarmy(dni);
+        Alarmy alarmy = new AlarmyGraficzne(dni);
         alarmy.powiadom();
         
 		calendar = new JCalendar();

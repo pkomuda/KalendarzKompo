@@ -4,17 +4,17 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Timer;
 
-public class Alarmy
+public abstract class Alarmy
 {
-	private Calendar zaGodzine;
-	private Calendar jutro;
-	private Calendar zaTydzien;
-	private Calendar teraz;
+	protected Calendar zaGodzine;
+	protected Calendar jutro;
+	protected Calendar zaTydzien;
+	protected Calendar teraz;
 	private Timer timerZaGodzine;
 	private Timer timerJutro;
 	private Timer timerZaTydzien;
-	private Timer timerSprWydarzenia;
-	private Dni dni;
+	protected Timer timerSprWydarzenia;
+	protected Dni dni;
 	
 	public Alarmy(Dni dni)
 	{	
@@ -38,12 +38,12 @@ public class Alarmy
 		teraz = new GregorianCalendar();
 	}
 	
-	public void powiadom()
-	{
-		timerSprWydarzenia.schedule(new SprawdzanieWydarzenZadanie(dni,zaGodzine,0), teraz.getTime(), 10000);
-		timerSprWydarzenia.schedule(new SprawdzanieWydarzenZadanie(dni,jutro,1), teraz.getTime(), 10000);
-		timerSprWydarzenia.schedule(new SprawdzanieWydarzenZadanie(dni,zaTydzien,7), teraz.getTime(), 10000);
-	}
+	public abstract void powiadom();
+//	{
+//		timerSprWydarzenia.schedule(new SprWydarzen(dni,zaGodzine,0), teraz.getTime(), 10000);
+//		timerSprWydarzenia.schedule(new SprWydarzen(dni,jutro,1), teraz.getTime(), 10000);
+//		timerSprWydarzenia.schedule(new SprWydarzen(dni,zaTydzien,7), teraz.getTime(), 10000);
+//	}
 	
 	private void setCzasNaZero(Calendar kiedy)
 	{

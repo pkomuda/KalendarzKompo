@@ -223,4 +223,21 @@ public class Wydarzenie
     		return Kalendarz.dodajZero(getGodzina())+":"+Kalendarz.dodajZero(getMinuta())+"\n"+opis;
     	else return opis;
     }
+    
+    public String szczegolyWydarzenia()
+    {
+    	switch(przypomnienie)
+    	{
+    	case DZIEN_PRZED:
+    		return "Jutro o "+ toString();
+    		
+    	case GODZINA_PRZED:
+    		return "Za godzine o "+ toString();
+    		
+    	case TYDZIEN_PRZED:
+    		return "Za tydzien o "+ toString();
+    	default:
+    		return toString();
+    	}
+    }
 }
