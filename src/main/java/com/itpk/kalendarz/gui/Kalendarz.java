@@ -1,8 +1,8 @@
 package com.itpk.kalendarz.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.Toolkit;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.itpk.kalendarz.dane.ZapisDoICS;
 import com.itpk.kalendarz.logika.Alarmy;
 import com.itpk.kalendarz.logika.Dni;
 import com.itpk.kalendarz.logika.Dzien;
@@ -19,11 +18,12 @@ import com.itpk.kalendarz.logika.Przypomnienie;
 import com.itpk.kalendarz.logika.Wydarzenie;
 import com.toedter.calendar.JCalendar;
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.SwingConstants;
 import javax.swing.JMenu;
 
 public class Kalendarz extends JFrame
@@ -33,18 +33,15 @@ public class Kalendarz extends JFrame
 	private Calendar data;
 	private int dzienMiesiaca;
 	private Dni dni;
-	private JButton info;
-	private JButton eksport;
 	private JButton btnNewButton;
 	private JButton btnNewButton_1;
-	private JPanel panel2;
-	private JPanel panel1;
 	private JMenuBar menuBar;
-	private JMenuItem mntmUstawienia;
-	private JMenuItem mntmOProgramie;
-	private JMenu mnPlik;
-	private JMenuItem mntmImportuj;
-	private JMenuItem mntmEksportuj;
+	private JMenu plik;
+	private JMenuItem importuj;
+	private JMenuItem eksportuj;
+	private JMenu info;
+	private JMenu ustawienia;
+	private JMenuItem kolory;
 
 	public static void main(String[] args)
 	{	
@@ -75,31 +72,54 @@ public class Kalendarz extends JFrame
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		mnPlik = new JMenu("Plik");
-		menuBar.add(mnPlik);
+		plik = new JMenu("Plik");
+		menuBar.add(plik);
 		
-		mntmImportuj = new JMenuItem("Importuj...");
-		mnPlik.add(mntmImportuj);
+		importuj = new JMenuItem("Importuj...");
+		plik.add(importuj);
 		
-		mntmEksportuj = new JMenuItem("Eksportuj...");
-		mnPlik.add(mntmEksportuj);
+		eksportuj = new JMenuItem("Eksportuj...");
+		plik.add(eksportuj);
 		
-		mntmUstawienia = new JMenuItem("Ustawienia");
-		menuBar.add(mntmUstawienia);
+		ustawienia = new JMenu("Ustawienia");
+		menuBar.add(ustawienia);
 		
-		mntmOProgramie = new JMenuItem("O programie");
-		menuBar.add(mntmOProgramie);
+		kolory = new JMenuItem("Kolory");
+		kolory.addActionListener(e ->
+		{
+			Color c = JColorChooser.showDialog(null, "Wybór koloru tła", new Color(238,238,238));
+			calendar.getDayChooser().getDayPanel().setBackground(c);
+		});
+		ustawienia.add(kolory);
+		
+		info = new JMenu("O programie");
+		info.addMouseListener(new MouseAdapter()
+		{
+			@Override
+			public void mouseClicked(MouseEvent e)
+			{
+				JOptionPane.showMessageDialog(null, Dni.oProgramie(), "", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		menuBar.add(info);
 		panel = new JPanel();
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		panel.setLayout(new BorderLayout(0, 0));
 		setContentPane(panel);
 		
 		dni = new Dni();
-		Dzien d1 = new Dzien(29, 4, 2019);
-		Wydarzenie w1 = new Wydarzenie("Spotkanie", "Łódź", new GregorianCalendar());
-//		d1.dodaj(new Wydarzenie("Spotkanie", "Łódź", new GregorianCalendar()));
+		Dzien d1 = new Dzien(28, 4, 2019);
+		Dzien d2 = new Dzien(29, 4, 2019);
+		Dzien d3 = new Dzien(4, 5, 2019);
+		Wydarzenie w1 = new Wydarzenie("Spotkanie - za godzine", "Łódź", new GregorianCalendar(2019, 4, 28),20,00,Przypomnienie.GODZINA_PRZED);
+		Wydarzenie w2 = new Wydarzenie("Spotkanie - jutro", "Łódź", new GregorianCalendar(2019, 4, 29),23, 13);
+		Wydarzenie w3 = new Wydarzenie("Spotkanie - za tydzien", "Łódź", new GregorianCalendar(2019,5,4),12,00,Przypomnienie.TYDZIEN_PRZED);
 		d1.dodaj(w1);
+		d2.dodaj(w2);
+		d3.dodaj(w3);
         dni.dodaj(d1);
+        dni.dodaj(d2);
+        dni.dodaj(d3);
         Alarmy alarmy = new Alarmy(dni);
         alarmy.powiadom();
         
@@ -116,27 +136,6 @@ public class Kalendarz extends JFrame
             okienko.setVisible(true);
 		});
 		panel.add(calendar, BorderLayout.CENTER);
-		
-		panel2 = new JPanel();
-		panel2.setLayout(new BorderLayout(0, 0));
-		calendar.getYearChooser().add(panel2, BorderLayout.NORTH);
-		
-		eksport = new JButton("Wyeksportuj kalendarz");
-		panel2.add(eksport, BorderLayout.EAST);
-		
-		panel1 = new JPanel();
-		calendar.getMonthChooser().add(panel1, BorderLayout.NORTH);
-		
-		info = new JButton("O programie");
-		panel1.add(info);
-		info.addMouseListener(new MouseAdapter()
-		{
-			@Override
-			public void mouseClicked(MouseEvent e)
-			{
-				JOptionPane.showMessageDialog(null, Dni.oProgramie(), "", JOptionPane.INFORMATION_MESSAGE);
-			}
-		});
 	}
 	
 	public Calendar getData()
