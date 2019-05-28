@@ -12,7 +12,7 @@ public class Wydarzenie
     private Boolean czyGodzina;
     private Boolean czyMiejsce;
     private Przypomnienie przypomnienie;
-    
+    boolean czyPowiadomiono;
   
     public Wydarzenie(String opis, String miejsce, Calendar data)
     {
@@ -22,6 +22,7 @@ public class Wydarzenie
         this.data = new GregorianCalendar(data.get(Calendar.YEAR),data.get(Calendar.MONTH),data.get(Calendar.DAY_OF_MONTH),0,0);
         this.czyGodzina=false;
         this.przypomnienie = Przypomnienie.DZIEN_PRZED;
+        this.czyPowiadomiono = false;
     }
     
     public Wydarzenie(String opis, String miejsce, Calendar data,int godzina, int minuta,Przypomnienie przypomnienie)
@@ -34,6 +35,7 @@ public class Wydarzenie
         this.data.set(Calendar.HOUR_OF_DAY, godzina);
         this.data.set(Calendar.MINUTE, minuta);
         this.przypomnienie = przypomnienie;
+        this.czyPowiadomiono = false;
     }
     
     public Wydarzenie(String opis, String miejsce, Calendar data,int godzina, int minuta)
@@ -46,6 +48,7 @@ public class Wydarzenie
         this.data.set(Calendar.HOUR_OF_DAY, godzina);
         this.data.set(Calendar.MINUTE, minuta);
         this.przypomnienie = Przypomnienie.DZIEN_PRZED;
+        this.czyPowiadomiono = false;
     }
 
     public Wydarzenie()
@@ -56,6 +59,7 @@ public class Wydarzenie
         this.data = new GregorianCalendar();
         this.czyGodzina=false;
         this.przypomnienie = Przypomnienie.DZIEN_PRZED;
+        this.czyPowiadomiono = false;
     }
 
     /*
@@ -175,6 +179,16 @@ public class Wydarzenie
     public void setMinuta(int minuta)
 	{
 		data.set(Calendar.MINUTE, minuta);
+	}
+    
+    public boolean getCzyPowiadomiono()
+    {
+    	return czyPowiadomiono;
+    }
+    
+    public void setCzyPowiadomiono(boolean czyPowiadomiono)
+	{
+		this.czyPowiadomiono = czyPowiadomiono;
 	}
 
     @Override
