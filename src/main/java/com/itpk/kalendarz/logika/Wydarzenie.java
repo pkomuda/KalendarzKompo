@@ -187,6 +187,5 @@ public class Wydarzenie
     	else if(czyGodzina)
     		return Kalendarz.dodajZero(getGodzina())+":"+Kalendarz.dodajZero(getMinuta())+"\n"+opis;
     	else return opis;
-			
     }
 }

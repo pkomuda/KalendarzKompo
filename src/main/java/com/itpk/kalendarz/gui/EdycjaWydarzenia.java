@@ -4,10 +4,14 @@ import java.awt.Frame;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Calendar;
+import java.util.Enumeration;
 
+import javax.swing.AbstractButton;
 import javax.swing.DefaultListModel;
+import javax.swing.JRadioButton;
 
 import com.itpk.kalendarz.logika.ComparatorPoDacie;
+import com.itpk.kalendarz.logika.Przypomnienie;
 import com.itpk.kalendarz.logika.Wydarzenie;
 
 public class EdycjaWydarzenia extends UstawieniaWydarzenia
@@ -26,30 +30,41 @@ public class EdycjaWydarzenia extends UstawieniaWydarzenia
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
+				glowneOkno.zaznaczoneWydarzenie().setOpis(getPoleOpis().getText());
+				glowneOkno.zaznaczoneWydarzenie().setMiejsce(getPoleMiejsce().getText());
+				for (Wydarzenie w : glowneOkno.getKalendarz().getDni().getDzien(glowneOkno.getObecna()).getLista())
+				{
+					System.out.println(w.getPrzypomnienie());
+				}
+				System.out.println(getZaznaczonyWybor());
+				switch(getZaznaczonyWybor())
+				{
+	            	case "godzina przed":
+	            		glowneOkno.zaznaczoneWydarzenie().setPrzypomnienie(Przypomnienie.GODZINA_PRZED);
+	            		break;
+	            	case "dzień przed":
+	            		glowneOkno.zaznaczoneWydarzenie().setPrzypomnienie(Przypomnienie.DZIEN_PRZED);
+	            		break;
+	            	case "tydzień przed":
+	            		glowneOkno.zaznaczoneWydarzenie().setPrzypomnienie(Przypomnienie.TYDZIEN_PRZED);
+	            		break;
+				}
 				if(getPoleGodzina().getValue()==null&&getPoleMinuta().getValue()==null)
 				{
-					glowneOkno.zaznaczoneWydarzenie().setOpis(getPoleOpis().getText());
-					glowneOkno.zaznaczoneWydarzenie().setMiejsce(getPoleMiejsce().getText());
 					glowneOkno.zaznaczoneWydarzenie().setCzyGodzina(false);
 				}
 				else if(getPoleGodzina().getValue()==null)
 				{
-					glowneOkno.zaznaczoneWydarzenie().setOpis(getPoleOpis().getText());
-					glowneOkno.zaznaczoneWydarzenie().setMiejsce(getPoleMiejsce().getText());
 					glowneOkno.zaznaczoneWydarzenie().getData().set(Calendar.MINUTE, (int)getPoleMinuta().getValue());
 					glowneOkno.zaznaczoneWydarzenie().setCzyGodzina(false);
 				}
 				else if(getPoleMinuta().getValue()==null)
 				{
-					glowneOkno.zaznaczoneWydarzenie().setOpis(getPoleOpis().getText());
-					glowneOkno.zaznaczoneWydarzenie().setMiejsce(getPoleMiejsce().getText());
 					glowneOkno.zaznaczoneWydarzenie().getData().set(Calendar.HOUR_OF_DAY, (int)getPoleGodzina().getValue());
 					glowneOkno.zaznaczoneWydarzenie().setCzyGodzina(false);
 				}
 				else
 				{
-					glowneOkno.zaznaczoneWydarzenie().setOpis(getPoleOpis().getText());
-					glowneOkno.zaznaczoneWydarzenie().setMiejsce(getPoleMiejsce().getText());
 					glowneOkno.zaznaczoneWydarzenie().setGodzina((int)getPoleGodzina().getValue());
 					glowneOkno.zaznaczoneWydarzenie().setMinuta((int)getPoleMinuta().getValue());
 					glowneOkno.zaznaczoneWydarzenie().setCzyGodzina(true);

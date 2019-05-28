@@ -56,6 +56,11 @@ public class OkienkoWydarzenia extends JFrame
 		
 		obecna = new GregorianCalendar();
         obecna.set(glowneOkno.getData().get(Calendar.YEAR), glowneOkno.getData().get(Calendar.MONTH), glowneOkno.getDzienMiesiaca());
+        for (Wydarzenie w : glowneOkno.getDni().getDzien(obecna).getLista())
+        {
+        	System.out.print(w+" ");
+        	System.out.println(w.getPrzypomnienie());
+        }
         
         /***************Lista wydarzeń***************/
         DefaultListModel<String> listModel = new DefaultListModel<>();
@@ -89,6 +94,18 @@ public class OkienkoWydarzenia extends JFrame
 						edycja.setGodzina(w.getGodzina());
 						edycja.setMinuta(w.getMinuta());
 					}
+					switch(w.getPrzypomnienie())
+					{
+		            	case GODZINA_PRZED:
+		            		edycja.getWyborGodzina().setSelected(true);
+		            		break;
+		            	case DZIEN_PRZED:
+		            		edycja.getWyborDzien().setSelected(true);
+		            		break;
+		            	case TYDZIEN_PRZED:
+		            		edycja.getWyborTydzien().setSelected(true);
+		            		break;
+					}
 				}
 			}
 		});
@@ -107,6 +124,11 @@ public class OkienkoWydarzenia extends JFrame
 				UstawieniaWydarzenia okienko = new DodanieWydarzenia(getThis(), listModel);
 				okienko.setLocationRelativeTo(okienko);
 				okienko.setVisible(true);
+//				for(Wydarzenie wydarzenie : glowneOkno.getDni().getDzien(obecna).getLista())
+//				{
+//					System.out.print(wydarzenie+" ");
+//					System.out.println(wydarzenie.getPrzypomnienie());
+//				}
 			}
 		});
 		panelPrzyciski.add(dodajPrzycisk);

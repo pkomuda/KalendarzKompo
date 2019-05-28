@@ -19,7 +19,6 @@ import com.toedter.calendar.JCalendar;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.SwingConstants;
 
 public class Kalendarz extends JFrame
 {
@@ -67,7 +66,10 @@ public class Kalendarz extends JFrame
 		
 		dni = new Dni();
 		Dzien d1 = new Dzien();
-		d1.dodaj(new Wydarzenie("Spotkanie", "Łódź",new GregorianCalendar()));
+		Wydarzenie w1 = new Wydarzenie("Spotkanie", "Łódź", new GregorianCalendar());
+		w1.setPrzypomnienie(Przypomnienie.TYDZIEN_PRZED);
+//		d1.dodaj(new Wydarzenie("Spotkanie", "Łódź", new GregorianCalendar()));
+		d1.dodaj(w1);
         dni.dodaj(d1);
 		
 		calendar = new JCalendar();
@@ -77,7 +79,7 @@ public class Kalendarz extends JFrame
 		{
 			data = calendar.getCalendar();
 			dzienMiesiaca = (int)e.getNewValue();
-			data.set(Calendar.DAY_OF_WEEK, dzienMiesiaca);
+			data.set(Calendar.DAY_OF_MONTH, dzienMiesiaca);
             OkienkoWydarzenia okienko = new OkienkoWydarzenia(this);
             okienko.setLocationRelativeTo(okienko);
             okienko.setVisible(true);

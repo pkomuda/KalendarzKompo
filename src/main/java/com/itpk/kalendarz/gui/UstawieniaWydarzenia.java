@@ -1,7 +1,7 @@
 package com.itpk.kalendarz.gui;
 
 import java.text.NumberFormat;
-
+import java.util.Enumeration;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
+import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -28,9 +29,10 @@ public abstract class UstawieniaWydarzenia extends JFrame{
 	private JFormattedTextField poleGodzina;
 	private JFormattedTextField poleMinuta;
 	private JButton przyciskZatwierdz;
-	private JRadioButton wyborGodzina;
 	private JRadioButton wyborDzien;
 	private JRadioButton wyborTydzien;
+	private JRadioButton wyborGodzina;
+	private ButtonGroup grupa;
 	
 	public UstawieniaWydarzenia(OkienkoWydarzenia glowneOkno, DefaultListModel<String> listModel)
 	{
@@ -121,10 +123,11 @@ public abstract class UstawieniaWydarzenia extends JFrame{
 		sl_panel.putConstraint(SpringLayout.WEST, wyborTydzien, 19, SpringLayout.EAST, wyborDzien);
 		panel.add(wyborTydzien);
 		
-		ButtonGroup grupa = new ButtonGroup();
+		grupa = new ButtonGroup();
 		grupa.add(wyborGodzina);
 		grupa.add(wyborDzien);
 		grupa.add(wyborTydzien);
+		wyborDzien.setSelected(true);
 		
 		przyciskZatwierdz = new JButton("Zatwierdź");
 		
@@ -132,7 +135,6 @@ public abstract class UstawieniaWydarzenia extends JFrame{
 		sl_panel.putConstraint(SpringLayout.EAST, przyciskZatwierdz, -10, SpringLayout.EAST, panel);
 		panel.add(przyciskZatwierdz);
 	}
-	
 	
 	public JTextField getPoleOpis()
 	{
@@ -178,5 +180,30 @@ public abstract class UstawieniaWydarzenia extends JFrame{
 	{
 		poleMinuta.setValue(minuta);
 	}
-
+	
+	public JRadioButton getWyborGodzina()
+	{
+		return wyborGodzina;
+	}
+	
+	public JRadioButton getWyborDzien()
+	{
+		return wyborGodzina;
+	}
+	
+	public JRadioButton getWyborTydzien()
+	{
+		return wyborGodzina;
+	}
+	
+	public String getZaznaczonyWybor()
+	{
+		for (Enumeration<AbstractButton> przyciski = grupa.getElements(); przyciski.hasMoreElements();)
+		{
+			AbstractButton przycisk = przyciski.nextElement();
+			if (przycisk.isSelected())
+				return przycisk.getText();
+		}
+		return null;
+	}
 }

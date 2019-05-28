@@ -1,26 +1,13 @@
 package com.itpk.kalendarz.gui;
 
 import java.awt.Frame;
-import java.text.NumberFormat;
-import java.util.Calendar;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.text.NumberFormatter;
 
 import com.itpk.kalendarz.logika.ComparatorPoDacie;
+import com.itpk.kalendarz.logika.Przypomnienie;
 import com.itpk.kalendarz.logika.Wydarzenie;
 
-import javax.swing.SpringLayout;
-import javax.swing.JLabel;
-import javax.swing.JFormattedTextField;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
 import javax.swing.DefaultListModel;
-import javax.swing.JButton;
 
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -45,7 +32,18 @@ public class DodanieWydarzenia extends UstawieniaWydarzenia {
 						glowneOkno.getKalendarz().getDni().dodajWydarzenie(getPoleOpis().getText(), getPoleMiejsce().getText(), glowneOkno.getObecna(), (Integer)getPoleGodzina().getValue(), 0);
 					else
 						glowneOkno.getKalendarz().getDni().dodajWydarzenie(getPoleOpis().getText(), getPoleMiejsce().getText(), glowneOkno.getObecna(), (Integer)getPoleGodzina().getValue(), (Integer)getPoleMinuta().getValue());
-
+					switch(getZaznaczonyWybor())
+					{
+		            	case "godzina przed":
+		            		glowneOkno.getKalendarz().getDni().getDzien(glowneOkno.getObecna()).getLista().get(glowneOkno.getKalendarz().getDni().getDzien(glowneOkno.getObecna()).getLista().size()-1).setPrzypomnienie(Przypomnienie.GODZINA_PRZED);
+		            		break;
+		            	case "dzień przed":
+		            		glowneOkno.getKalendarz().getDni().getDzien(glowneOkno.getObecna()).getLista().get(glowneOkno.getKalendarz().getDni().getDzien(glowneOkno.getObecna()).getLista().size()-1).setPrzypomnienie(Przypomnienie.DZIEN_PRZED);
+		            		break;
+		            	case "tydzień przed":
+		            		glowneOkno.getKalendarz().getDni().getDzien(glowneOkno.getObecna()).getLista().get(glowneOkno.getKalendarz().getDni().getDzien(glowneOkno.getObecna()).getLista().size()-1).setPrzypomnienie(Przypomnienie.TYDZIEN_PRZED);
+		            		break;
+					}
 					if(glowneOkno.getKalendarz().getDni().getDzien(glowneOkno.getObecna())!=null)
 					{
 						glowneOkno.getKalendarz().getDni().getDzien(glowneOkno.getObecna()).getLista().sort(new ComparatorPoDacie());
