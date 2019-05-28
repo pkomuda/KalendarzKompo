@@ -32,11 +32,6 @@ public class EdycjaWydarzenia extends UstawieniaWydarzenia
 			{
 				glowneOkno.zaznaczoneWydarzenie().setOpis(getPoleOpis().getText());
 				glowneOkno.zaznaczoneWydarzenie().setMiejsce(getPoleMiejsce().getText());
-				for (Wydarzenie w : glowneOkno.getKalendarz().getDni().getDzien(glowneOkno.getObecna()).getLista())
-				{
-					System.out.println(w.getPrzypomnienie());
-				}
-				System.out.println(getZaznaczonyWybor());
 				switch(getZaznaczonyWybor())
 				{
 	            	case "godzina przed":

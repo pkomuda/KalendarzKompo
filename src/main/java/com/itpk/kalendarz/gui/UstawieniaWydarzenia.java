@@ -181,19 +181,19 @@ public abstract class UstawieniaWydarzenia extends JFrame{
 		poleMinuta.setValue(minuta);
 	}
 	
-	public JRadioButton getWyborGodzina()
+	public void setWyborGodzina(boolean zaznaczone)
 	{
-		return wyborGodzina;
+		wyborGodzina.setSelected(zaznaczone);
 	}
 	
-	public JRadioButton getWyborDzien()
+	public void setWyborDzien(boolean zaznaczone)
 	{
-		return wyborGodzina;
+		wyborDzien.setSelected(zaznaczone);
 	}
 	
-	public JRadioButton getWyborTydzien()
+	public void setWyborTydzien(boolean zaznaczone)
 	{
-		return wyborGodzina;
+		wyborTydzien.setSelected(zaznaczone);
 	}
 	
 	public String getZaznaczonyWybor()
