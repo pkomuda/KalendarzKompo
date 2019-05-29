@@ -106,6 +106,16 @@ public class Dni implements Kolekcja<Dzien>
     		d.getLista().clear();
     	}
     }
+    
+    public List<Wydarzenie> wydarzeniaZawierajace (String s)
+    {
+    	List<Wydarzenie> wybrane=new ArrayList<Wydarzenie>();
+    	for (Dzien dzien : listaDni) 
+    	{
+    		wybrane.addAll(dzien.wydarzeniaZawierajace(s));
+		}
+    	return wybrane;
+    }
 
     @Override
     public String toString()

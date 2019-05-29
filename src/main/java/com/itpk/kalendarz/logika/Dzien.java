@@ -1,6 +1,7 @@
 package com.itpk.kalendarz.logika;
 
 
+import java.awt.geom.Area;
 import java.util.*;
 
 public class Dzien implements Kolekcja<Wydarzenie>, Comparable<Dzien>
@@ -88,6 +89,17 @@ public class Dzien implements Kolekcja<Wydarzenie>, Comparable<Dzien>
     public void sortujWydarzenia()
     {
         this.wydarzenia.sort(new ComparatorPoDacie());
+    }
+    
+    public List<Wydarzenie> wydarzeniaZawierajace(String s)
+    {
+    	List<Wydarzenie> wybrane= new ArrayList<Wydarzenie>();
+    	for (Wydarzenie wydarzenie : wydarzenia) 
+    	{
+    		if(wydarzenie.getOpis().contains(s))
+    			wybrane.add(wydarzenie);
+		}
+    	return wybrane;
     }
 
     @Override
