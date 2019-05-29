@@ -142,7 +142,7 @@ public class Kalendarz extends JFrame
         dni.dodaj(d2);
         dni.dodaj(d3);
         Alarmy alarmy = new AlarmyGraficzne(dni);
-        alarmy.powiadom();
+        //alarmy.powiadom();
         
 		calendar = new JCalendar();
 		calendar.getDayChooser().setWeekOfYearVisible(false);

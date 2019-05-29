@@ -9,6 +9,7 @@ import com.itpk.kalendarz.logika.Dni;
 
 import javax.swing.SpringLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JFormattedTextField;
 import javax.swing.JButton;
 
@@ -77,8 +78,15 @@ public class UsuniecieWydarzenia extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				dni.usunWydarzeniaStarszeNiz(getDzien(), getMiesiac(), getRok());
-				Frame.getFrames()[getFrames().length-1].dispose();
+				if (poleDzien.getValue()!=null && poleMiesiac.getValue()!=null && poleRok.getValue()!=null)
+				{
+					dni.usunWydarzeniaStarszeNiz(getDzien(), getMiesiac(), getRok());
+					Frame.getFrames()[getFrames().length-1].dispose();
+				}
+				else
+				{
+					Frame.getFrames()[getFrames().length-1].dispose();
+				}
 			}
 		});
 		sl_panel.putConstraint(SpringLayout.WEST, przyciskZatwierdz, 159, SpringLayout.WEST, panel);
