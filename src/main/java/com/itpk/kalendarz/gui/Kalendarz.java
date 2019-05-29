@@ -44,6 +44,7 @@ public class Kalendarz extends JFrame
 	private JMenuItem kolory;
 	private JMenuItem doICS;
 	private ZapisDoICS zapisDoICS;
+	private JMenuItem usuwanieWydarzen;
 
 	public static void main(String[] args)
 	{	
@@ -90,6 +91,15 @@ public class Kalendarz extends JFrame
 			zapisDoICS.zapisz("eksport");
 		});
 		eksportuj.add(doICS);
+		
+		usuwanieWydarzen = new JMenuItem("Usuwanie wydarzeń");
+		usuwanieWydarzen.addActionListener(e ->
+		{
+			UsuniecieWydarzenia usun = new UsuniecieWydarzenia(dni);
+			usun.setLocationRelativeTo(usun);
+			usun.setVisible(true);
+		});
+		plik.add(usuwanieWydarzen);
 		
 		ustawienia = new JMenu("Ustawienia");
 		menuBar.add(ustawienia);

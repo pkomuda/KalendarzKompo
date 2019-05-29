@@ -77,27 +77,14 @@ public abstract class UstawieniaWydarzenia extends JFrame{
 		panel.add(poleMiejsce);
 		poleMiejsce.setColumns(10);
 		
-		NumberFormat format = NumberFormat.getInstance();
-	    NumberFormatter formatterGodzina = new WlasnyNumberFormatter(format);
-	    formatterGodzina.setValueClass(Integer.class);
-	    formatterGodzina.setMinimum(0);
-	    formatterGodzina.setMaximum(23);
-	    formatterGodzina.setAllowsInvalid(false);
-	    formatterGodzina.setCommitsOnValidEdit(true);
-		poleGodzina = new JFormattedTextField(formatterGodzina);
+		poleGodzina = new JFormattedTextField(getFormatter(0,23));
 		sl_panel.putConstraint(SpringLayout.WEST, lblMinuta, 21, SpringLayout.EAST, poleGodzina);
 		sl_panel.putConstraint(SpringLayout.NORTH, poleGodzina, -5, SpringLayout.NORTH, lblGodzina);
 		sl_panel.putConstraint(SpringLayout.WEST, poleGodzina, 0, SpringLayout.WEST, poleOpis);
 		sl_panel.putConstraint(SpringLayout.EAST, poleGodzina, -318, SpringLayout.EAST, panel);
 		panel.add(poleGodzina);
 		
-		NumberFormatter formatterMinuta = new WlasnyNumberFormatter(format);
-		formatterMinuta.setValueClass(Integer.class);
-		formatterMinuta.setMinimum(0);
-		formatterMinuta.setMaximum(59);
-		formatterMinuta.setAllowsInvalid(false);
-		formatterMinuta.setCommitsOnValidEdit(true);
-		poleMinuta = new JFormattedTextField(formatterMinuta);
+		poleMinuta = new JFormattedTextField(getFormatter(0,59));
 		sl_panel.putConstraint(SpringLayout.NORTH, poleMinuta, -5, SpringLayout.NORTH, lblGodzina);
 		sl_panel.putConstraint(SpringLayout.WEST, poleMinuta, 25, SpringLayout.EAST, lblMinuta);
 		sl_panel.putConstraint(SpringLayout.EAST, poleMinuta, -182, SpringLayout.EAST, panel);
@@ -205,5 +192,17 @@ public abstract class UstawieniaWydarzenia extends JFrame{
 				return przycisk.getText();
 		}
 		return null;
+	}
+	
+	private NumberFormatter getFormatter(int min, int max)
+	{
+		NumberFormat format = NumberFormat.getInstance();
+	    NumberFormatter formatter = new WlasnyNumberFormatter(format);
+	    formatter.setValueClass(Integer.class);
+	    formatter.setMinimum(min);
+	    formatter.setMaximum(max);
+	    formatter.setAllowsInvalid(false);
+	    formatter.setCommitsOnValidEdit(true);
+	    return formatter;
 	}
 }

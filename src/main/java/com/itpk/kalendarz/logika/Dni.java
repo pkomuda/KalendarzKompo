@@ -86,27 +86,25 @@ public class Dni implements Kolekcja<Dzien>
     public void usunWydarzeniaStarszeNiz(int dzien,int miesiac,int rok)
     {
     	sortuj();
-    	Dzien data=new Dzien(dzien, miesiac, rok);
+    	Dzien data = new Dzien(dzien, miesiac, rok);
     	for (Dzien d : listaDni) 
     	{
     		if(d.compareTo(data)>=0)
     			break;
     		d.getLista().clear();
     	}
-		
     }
     
     public void usunWydarzeniaStarszeNiz(Calendar dzien)
     {
     	sortuj();
-    	Dzien data=new Dzien(dzien);
+    	Dzien data = new Dzien(dzien);
     	for (Dzien d : listaDni) 
     	{
     		if(d.compareTo(data)>=0)
     			break;
     		d.getLista().clear();
     	}
-	
     }
 
     @Override
