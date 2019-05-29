@@ -76,7 +76,7 @@ public class OkienkoWydarzenia extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				if (e.getClickCount() == 2)
+				if (e.getClickCount()==2 && list.getSelectedValue()!="Brak wydarzen w tym dniu")
 				{
 					Wydarzenie w = glowneOkno.getDni().getDzien(obecna).getLista().get(list.getSelectedIndex());
 					UstawieniaWydarzenia edycja = new EdycjaWydarzenia(getThis(), listModel);

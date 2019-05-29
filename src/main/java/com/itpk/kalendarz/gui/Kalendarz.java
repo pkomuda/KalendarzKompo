@@ -107,14 +107,14 @@ public class Kalendarz extends JFrame
 		
 		dni = new Dni();
 		Dzien d1 = new Dzien(29, 4, 2019);
-		Dzien d2 = new Dzien(30, 4, 2019);
-		Dzien d3 = new Dzien(5, 5, 2019);
-		Wydarzenie w1 = new Wydarzenie("Spotkanie - za godzine", "Łódź", new GregorianCalendar(2019, 4, 29),13,00,Przypomnienie.GODZINA_PRZED);
-		Wydarzenie w2 = new Wydarzenie("Spotkanie - jutro", "Łódź", new GregorianCalendar(2019, 4, 30),23, 13);
-		Wydarzenie w3 = new Wydarzenie("Spotkanie - za tydzien", "Łódź", new GregorianCalendar(2019,5,5),12,00,Przypomnienie.TYDZIEN_PRZED);
-//		d1.dodaj(w1);
-//		d2.dodaj(w2);
-//		d3.dodaj(w3);
+		Dzien d2 = new Dzien(29, 4, 2019);
+		Dzien d3 = new Dzien(4, 5, 2019);
+		Wydarzenie w1 = new Wydarzenie("Spotkanie - za godzine", "Łódź", new GregorianCalendar(2019, 4, 28),20,30,Przypomnienie.GODZINA_PRZED);
+		Wydarzenie w2 = new Wydarzenie("Spotkanie - jutro", "Łódź", new GregorianCalendar(2019, 4, 29),23, 13);
+		Wydarzenie w3 = new Wydarzenie("Spotkanie - za tydzien", "Łódź", new GregorianCalendar(2019,5,4),12,00,Przypomnienie.TYDZIEN_PRZED);
+		d1.dodaj(w1);
+		d2.dodaj(w2);
+		d3.dodaj(w3);
         dni.dodaj(d1);
         dni.dodaj(d2);
         dni.dodaj(d3);
