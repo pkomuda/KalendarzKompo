@@ -96,7 +96,7 @@ public class Dzien implements Kolekcja<Wydarzenie>, Comparable<Dzien>
     	List<Wydarzenie> wybrane= new ArrayList<Wydarzenie>();
     	for (Wydarzenie wydarzenie : wydarzenia) 
     	{
-    		if (StringUtils.containsIgnoreCase(wydarzenie.getOpis(), s))
+    		if (StringUtils.containsIgnoreCase(wydarzenie.getOpis(), s)|| StringUtils.containsIgnoreCase(wydarzenie.getMiejsce(), s))
     			wybrane.add(wydarzenie);
 		}
     	return wybrane;
