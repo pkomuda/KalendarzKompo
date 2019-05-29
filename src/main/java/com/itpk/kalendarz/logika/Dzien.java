@@ -1,8 +1,8 @@
 package com.itpk.kalendarz.logika;
 
-
-import java.awt.geom.Area;
 import java.util.*;
+
+import org.apache.commons.lang3.StringUtils;
 
 public class Dzien implements Kolekcja<Wydarzenie>, Comparable<Dzien>
 {
@@ -96,7 +96,7 @@ public class Dzien implements Kolekcja<Wydarzenie>, Comparable<Dzien>
     	List<Wydarzenie> wybrane= new ArrayList<Wydarzenie>();
     	for (Wydarzenie wydarzenie : wydarzenia) 
     	{
-    		if(wydarzenie.getOpis().contains(s))
+    		if (StringUtils.containsIgnoreCase(wydarzenie.getOpis(), s))
     			wybrane.add(wydarzenie);
 		}
     	return wybrane;

@@ -45,6 +45,7 @@ public class Kalendarz extends JFrame
 	private JMenuItem doICS;
 	private ZapisDoICS zapisDoICS;
 	private JMenuItem usuwanieWydarzen;
+	private JMenuItem mntmFiltrowanieWydarze;
 
 	public static void main(String[] args)
 	{	
@@ -99,6 +100,15 @@ public class Kalendarz extends JFrame
 			usun.setLocationRelativeTo(usun);
 			usun.setVisible(true);
 		});
+		
+		mntmFiltrowanieWydarze = new JMenuItem("Filtrowanie wydarzeń");
+		mntmFiltrowanieWydarze.addActionListener(e ->
+		{
+			FiltrowanieWydarzen filtruj = new FiltrowanieWydarzen(dni);
+			filtruj.setLocationRelativeTo(filtruj);
+			filtruj.setVisible(true);
+		});
+		plik.add(mntmFiltrowanieWydarze);
 		plik.add(usuwanieWydarzen);
 		
 		ustawienia = new JMenu("Ustawienia");
@@ -134,7 +144,7 @@ public class Kalendarz extends JFrame
 		Dzien d3 = new Dzien(5, 5, 2019);
 		Wydarzenie w1 = new Wydarzenie("Spotkanie - za godzine", "Łódź", new GregorianCalendar(2019, 4, 29),16,00,Przypomnienie.GODZINA_PRZED);
 		Wydarzenie w2 = new Wydarzenie("Spotkanie - jutro", "Łódź", new GregorianCalendar(2019, 4, 30),23, 13);
-		Wydarzenie w3 = new Wydarzenie("Spotkanie - za tydzien", "Łódź", new GregorianCalendar(2019,5,5),12,00,Przypomnienie.TYDZIEN_PRZED);
+		Wydarzenie w3 = new Wydarzenie("Spotkanie - za tydzień", "Łódź", new GregorianCalendar(2019,5,5),12,00,Przypomnienie.TYDZIEN_PRZED);
 		d1.dodaj(w1);
 		d2.dodaj(w2);
 		d3.dodaj(w3);
