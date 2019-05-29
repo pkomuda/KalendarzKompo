@@ -39,6 +39,7 @@ public class FiltrowanieWydarzen extends JFrame
 		pole = new JTextField();
 		panel_1.add(pole);
 		pole.setColumns(10);
+		pole.setToolTipText("Filtrowanie zdarzeń według ich opisu i miejsca");
 		
 		list = new JList<String>();
 		panel.add(list, BorderLayout.CENTER);
