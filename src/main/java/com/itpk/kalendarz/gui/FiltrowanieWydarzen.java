@@ -26,7 +26,7 @@ public class FiltrowanieWydarzen extends JFrame
 
 	public FiltrowanieWydarzen(Dni dni)
 	{
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		panel = new JPanel();
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
