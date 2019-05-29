@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.itpk.kalendarz.dane.ZapisDoICS;
 import com.itpk.kalendarz.logika.Alarmy;
 import com.itpk.kalendarz.logika.Dni;
 import com.itpk.kalendarz.logika.Dzien;
@@ -24,6 +25,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Kalendarz extends JFrame
 {
@@ -34,11 +37,13 @@ public class Kalendarz extends JFrame
 	private Dni dni;
 	private JMenuBar menuBar;
 	private JMenu plik;
-	private JMenuItem importuj;
-	private JMenuItem eksportuj;
+	private JMenu importuj;
+	private JMenu eksportuj;
 	private JMenu info;
 	private JMenu ustawienia;
 	private JMenuItem kolory;
+	private JMenuItem doICS;
+	private ZapisDoICS zapisDoICS;
 
 	public static void main(String[] args)
 	{	
@@ -72,11 +77,19 @@ public class Kalendarz extends JFrame
 		plik = new JMenu("Plik");
 		menuBar.add(plik);
 		
-		importuj = new JMenuItem("Importuj...");
+		importuj = new JMenu("Importuj...");
 		plik.add(importuj);
 		
-		eksportuj = new JMenuItem("Eksportuj...");
+		eksportuj = new JMenu("Eksportuj...");
 		plik.add(eksportuj);
+		
+		doICS = new JMenuItem("Do .ics");
+		doICS.addActionListener(e ->
+		{
+			zapisDoICS = new ZapisDoICS(dni);
+			zapisDoICS.zapisz("eksport");
+		});
+		eksportuj.add(doICS);
 		
 		ustawienia = new JMenu("Ustawienia");
 		menuBar.add(ustawienia);
@@ -107,11 +120,11 @@ public class Kalendarz extends JFrame
 		
 		dni = new Dni();
 		Dzien d1 = new Dzien(29, 4, 2019);
-		Dzien d2 = new Dzien(29, 4, 2019);
-		Dzien d3 = new Dzien(4, 5, 2019);
-		Wydarzenie w1 = new Wydarzenie("Spotkanie - za godzine", "Łódź", new GregorianCalendar(2019, 4, 28),20,30,Przypomnienie.GODZINA_PRZED);
-		Wydarzenie w2 = new Wydarzenie("Spotkanie - jutro", "Łódź", new GregorianCalendar(2019, 4, 29),23, 13);
-		Wydarzenie w3 = new Wydarzenie("Spotkanie - za tydzien", "Łódź", new GregorianCalendar(2019,5,4),12,00,Przypomnienie.TYDZIEN_PRZED);
+		Dzien d2 = new Dzien(30, 4, 2019);
+		Dzien d3 = new Dzien(5, 5, 2019);
+		Wydarzenie w1 = new Wydarzenie("Spotkanie - za godzine", "Łódź", new GregorianCalendar(2019, 4, 29),16,00,Przypomnienie.GODZINA_PRZED);
+		Wydarzenie w2 = new Wydarzenie("Spotkanie - jutro", "Łódź", new GregorianCalendar(2019, 4, 30),23, 13);
+		Wydarzenie w3 = new Wydarzenie("Spotkanie - za tydzien", "Łódź", new GregorianCalendar(2019,5,5),12,00,Przypomnienie.TYDZIEN_PRZED);
 		d1.dodaj(w1);
 		d2.dodaj(w2);
 		d3.dodaj(w3);

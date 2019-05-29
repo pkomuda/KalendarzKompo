@@ -13,8 +13,8 @@ public class AlarmyGraficzne extends Alarmy
 	@Override
 	public void powiadom()
 	{
-		timerSprWydarzenia.schedule(new SprWydarzenGraficzne(dni,zaGodzine,0), teraz.getTime(), 10000);
-		timerSprWydarzenia.schedule(new SprWydarzenGraficzne(dni,jutro,1), teraz.getTime(), 10000);
-		timerSprWydarzenia.schedule(new SprWydarzenGraficzne(dni,zaTydzien,7), teraz.getTime(), 10000);
+		timer.schedule(new SprWydarzenGraficzne(dni,zaGodzine,0), teraz.getTime(), 10000);
+		timer.schedule(new SprWydarzenGraficzne(dni,jutro,1), teraz.getTime(), 10000);
+		timer.schedule(new SprWydarzenGraficzne(dni,zaTydzien,7), teraz.getTime(), 10000);
 	}
 }
