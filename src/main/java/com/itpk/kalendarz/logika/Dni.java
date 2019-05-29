@@ -43,10 +43,10 @@ public class Dni implements Kolekcja<Dzien>
     public Dzien getDzien(int dzien, int miesiac, int rok) throws BrakWydarzenWyjatek
     {
     	Dzien temp = new Dzien(dzien, miesiac, rok);
-    	if (listaDni.contains(temp))
-        	return listaDni.get(listaDni.indexOf(temp));
+    	if (!listaDni.contains(temp) || listaDni.get(listaDni.indexOf(temp)).getLista().isEmpty())
+        	throw new BrakWydarzenWyjatek();
     	else
-    		throw new BrakWydarzenWyjatek();
+    		return listaDni.get(listaDni.indexOf(temp));
     }
     
     public Dzien getDzien(Calendar obecna) 
