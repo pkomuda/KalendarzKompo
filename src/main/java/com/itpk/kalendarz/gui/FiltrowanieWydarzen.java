@@ -26,7 +26,7 @@ public class FiltrowanieWydarzen extends JFrame
 
 	public FiltrowanieWydarzen(Dni dni)
 	{
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		panel = new JPanel();
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -39,6 +39,7 @@ public class FiltrowanieWydarzen extends JFrame
 		pole = new JTextField();
 		panel_1.add(pole);
 		pole.setColumns(10);
+		pole.setToolTipText("Filtrowanie zdarzeń według ich opisu i miejsca");
 		
 		list = new JList<String>();
 		panel.add(list, BorderLayout.CENTER);
