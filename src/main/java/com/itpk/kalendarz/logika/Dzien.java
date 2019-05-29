@@ -28,7 +28,7 @@ public class Dzien implements Kolekcja<Wydarzenie>, Comparable<Dzien>
         this.wydarzenia = new ArrayList<>();
     }
 
-    public int[] getData()
+    public int[] getDataTab()
     {
         return new int[]{data.get(Calendar.YEAR), data.get(Calendar.MONTH), data.get(Calendar.DAY_OF_MONTH)};
     }
@@ -53,7 +53,7 @@ public class Dzien implements Kolekcja<Wydarzenie>, Comparable<Dzien>
     @Override
     public boolean dodaj(Wydarzenie w)
     {
-    	if(Arrays.equals(getData(), w.getDataTab()))
+    	if(Arrays.equals(getDataTab(), w.getDataTab()))
     		return this.wydarzenia.add(w);
     	else return false;
     }
@@ -61,7 +61,7 @@ public class Dzien implements Kolekcja<Wydarzenie>, Comparable<Dzien>
     public boolean dodaj(String opis, String miejsce, Calendar obecna,int godzina, int minuta)
     {
     	Wydarzenie w=new Wydarzenie(opis,miejsce,obecna,godzina,minuta);
-    	if(Arrays.equals(getData(), w.getDataTab()))
+    	if(Arrays.equals(getDataTab(), w.getDataTab()))
     		return this.wydarzenia.add(w);
     	else return false;
     }
@@ -69,7 +69,7 @@ public class Dzien implements Kolekcja<Wydarzenie>, Comparable<Dzien>
     public boolean dodaj(String opis, String miejsce, Calendar obecna)
     {
     	Wydarzenie w=new Wydarzenie(opis,miejsce,obecna);
-    	if(Arrays.equals(getData(), w.getDataTab()))
+    	if(Arrays.equals(getDataTab(), w.getDataTab()))
     		return this.wydarzenia.add(w);
     	else return false;
     }
@@ -105,33 +105,33 @@ public class Dzien implements Kolekcja<Wydarzenie>, Comparable<Dzien>
     	if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Dzien o = (Dzien)obj;
-        return (Arrays.equals(getData(), o.getData()));
+        return (Arrays.equals(getDataTab(), o.getDataTab()));
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(getData());
+        return Objects.hash(getDataTab());
     }
     
     @Override
     public int compareTo(Dzien o)
     {
-        if (getData()[0] > o.getData()[0])
+        if (getDataTab()[0] > o.getDataTab()[0])
             return 1;
-        else if (getData()[0] < o.getData()[0])
+        else if (getDataTab()[0] < o.getDataTab()[0])
             return -1;
         else
         {
-            if (getData()[1] > o.getData()[1])
+            if (getDataTab()[1] > o.getDataTab()[1])
                 return 1;
-            else if (getData()[1] < o.getData()[1])
+            else if (getDataTab()[1] < o.getDataTab()[1])
                 return -1;
             else
             {
-                if (getData()[2] > o.getData()[2])
+                if (getDataTab()[2] > o.getDataTab()[2])
                     return 1;
-                else if (getData()[2] < o.getData()[2])
+                else if (getDataTab()[2] < o.getDataTab()[2])
                     return -1;
                 else
                     return 0;
