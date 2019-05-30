@@ -1,10 +1,8 @@
-package com.itpk.kalendarz.gui;
+package com.itpk.kalendarz.prezentacja.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -16,9 +14,7 @@ import com.itpk.kalendarz.dane.ZapisDoICS;
 import com.itpk.kalendarz.dane.ZapisDoSQL;
 import com.itpk.kalendarz.dane.ZapisDoXML;
 import com.itpk.kalendarz.logika.Alarmy;
-import com.itpk.kalendarz.logika.Dni;
-import com.itpk.kalendarz.logika.Dzien;
-import com.itpk.kalendarz.logika.Przypomnienie;
+import com.itpk.kalendarz.logika.RepozytoriumDni;
 import com.itpk.kalendarz.logika.Wydarzenie;
 import com.toedter.calendar.JCalendar;
 import javax.swing.JColorChooser;
@@ -28,8 +24,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class Kalendarz extends JFrame
 {
@@ -37,7 +31,7 @@ public class Kalendarz extends JFrame
 	private JCalendar calendar;
 	private Calendar data;
 	private int dzienMiesiaca;
-	private Dni dni;
+	private RepozytoriumDni dni;
 	private JMenuBar menuBar;
 	private JMenu plik;
 	private JMenu importuj;
@@ -53,22 +47,6 @@ public class Kalendarz extends JFrame
 	private JMenuItem doBazy;
 	private JMenuItem doXML;
 	private JMenuItem zXML;
-
-	public static void main(String[] args)
-	{
-		EventQueue.invokeLater(() -> {
-			try
-			{
-				Kalendarz frame = new Kalendarz();
-				frame.setLocationRelativeTo(frame);
-				frame.setVisible(true);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-			}
-		});
-	}
 
 	public Kalendarz()
 	{
@@ -170,7 +148,7 @@ public class Kalendarz extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				JOptionPane.showMessageDialog(null, Dni.oProgramie(), "", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, RepozytoriumDni.oProgramie(), "", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		menuBar.add(info);
@@ -179,7 +157,7 @@ public class Kalendarz extends JFrame
 		panel.setLayout(new BorderLayout(0, 0));
 		setContentPane(panel);
 		
-		dni = new Dni();
+		dni = new RepozytoriumDni();
 //		Dzien d1 = new Dzien(29, 4, 2019);
 //		Dzien d2 = new Dzien(30, 4, 2019);
 //		Dzien d3 = new Dzien(5, 5, 2019);
@@ -220,7 +198,7 @@ public class Kalendarz extends JFrame
         return dzienMiesiaca;
     }
 
-    public Dni getDni()
+    public RepozytoriumDni getDni()
     {
         return dni;
     }

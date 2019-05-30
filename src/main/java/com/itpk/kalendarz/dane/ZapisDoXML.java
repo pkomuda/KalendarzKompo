@@ -1,6 +1,6 @@
 package com.itpk.kalendarz.dane;
 
-import com.itpk.kalendarz.logika.Dni;
+import com.itpk.kalendarz.logika.RepozytoriumDni;
 import com.itpk.kalendarz.logika.Wydarzenie;
 
 import java.beans.XMLEncoder;
@@ -10,9 +10,9 @@ import java.io.FileOutputStream;
 
 public class ZapisDoXML
 {
-    private Dni dni;
+    private RepozytoriumDni dni;
 
-    public ZapisDoXML(Dni dni)
+    public ZapisDoXML(RepozytoriumDni dni)
     {
         this.dni = dni;
     }

@@ -1,18 +1,17 @@
 package com.itpk.kalendarz.logika;
 
-import java.awt.Toolkit;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.TimerTask;
 
 public abstract class SprWydarzen extends TimerTask
 {
-	private Dni dni;
+	private RepozytoriumDni dni;
 	private Calendar kiedy;
 	private Calendar teraz;
 	private int zaIle;
 	
-	public SprWydarzen(Dni dni, Calendar kiedy, int zaIle)
+	public SprWydarzen(RepozytoriumDni dni, Calendar kiedy, int zaIle)
 	{
 		this.dni = dni;
 		this.kiedy = kiedy;

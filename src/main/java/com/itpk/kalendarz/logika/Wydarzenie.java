@@ -1,11 +1,8 @@
 package com.itpk.kalendarz.logika;
-import java.sql.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import com.itpk.kalendarz.gui.Kalendarz;
-
-import javax.xml.crypto.Data;
+import com.itpk.kalendarz.prezentacja.gui.Kalendarz;
 
 public class Wydarzenie
 {

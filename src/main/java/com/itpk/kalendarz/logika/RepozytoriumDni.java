@@ -7,12 +7,12 @@ import java.util.List;
 
 import com.itpk.kalendarz.logika.wyjatki.BrakWydarzenWyjatek;
 
-public class Dni implements Kolekcja<Dzien>
+public class RepozytoriumDni implements Kolekcja<Dzien>
 {
     private List<Dzien> listaDni;
 
 
-    public Dni()
+    public RepozytoriumDni()
     {
         this.listaDni = new ArrayList<>();
     }
@@ -145,7 +145,7 @@ public class Dni implements Kolekcja<Dzien>
     @Override
     public String toString()
     {
-        return "Dni{" +
+        return "RepozytoriumDni{" +
                 "listaDni=" + listaDni +
                 '}';
     }

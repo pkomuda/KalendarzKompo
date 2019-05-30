@@ -1,4 +1,4 @@
-package com.itpk.kalendarz.gui;
+package com.itpk.kalendarz.prezentacja.gui;
 
 import java.awt.BorderLayout;
 import java.util.ArrayList;
@@ -9,10 +9,8 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 
-import com.itpk.kalendarz.logika.ComparatorPoDacie;
 import com.itpk.kalendarz.logika.Wydarzenie;
 import com.itpk.kalendarz.logika.wyjatki.BrakWydarzenWyjatek;
 
@@ -21,7 +19,6 @@ import javax.swing.JList;
 import java.awt.Font;
 import javax.swing.JButton;
 
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 

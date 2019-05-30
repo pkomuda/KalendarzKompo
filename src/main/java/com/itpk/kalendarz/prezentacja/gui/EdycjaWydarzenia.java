@@ -1,14 +1,11 @@
-package com.itpk.kalendarz.gui;
+package com.itpk.kalendarz.prezentacja.gui;
 
 import java.awt.Frame;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Calendar;
-import java.util.Enumeration;
 
-import javax.swing.AbstractButton;
 import javax.swing.DefaultListModel;
-import javax.swing.JRadioButton;
 
 import com.itpk.kalendarz.logika.ComparatorPoDacie;
 import com.itpk.kalendarz.logika.Przypomnienie;

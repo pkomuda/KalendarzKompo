@@ -6,17 +6,16 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import com.itpk.kalendarz.gui.Kalendarz;
-import com.itpk.kalendarz.logika.Dni;
-import com.itpk.kalendarz.logika.Dzien;
+import com.itpk.kalendarz.logika.RepozytoriumDni;
+import com.itpk.kalendarz.prezentacja.gui.Kalendarz;
 import com.itpk.kalendarz.logika.Wydarzenie;
 
 public class ZapisDoICS
 {	
 	private Calendar teraz;
-	private Dni dni;
+	private RepozytoriumDni dni;
 	
-	public ZapisDoICS(Dni dni)
+	public ZapisDoICS(RepozytoriumDni dni)
 	{
 		this.dni = dni;
 	}

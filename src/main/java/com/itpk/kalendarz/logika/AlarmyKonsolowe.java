@@ -2,7 +2,7 @@ package com.itpk.kalendarz.logika;
 
 public class AlarmyKonsolowe extends Alarmy
 {	
-	public AlarmyKonsolowe(Dni dni)
+	public AlarmyKonsolowe(RepozytoriumDni dni)
 	{
 		super(dni);
 	}

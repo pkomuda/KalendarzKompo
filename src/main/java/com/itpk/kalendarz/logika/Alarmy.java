@@ -11,9 +11,9 @@ public abstract class Alarmy
 	protected Calendar zaTydzien;
 	protected Calendar teraz;
 	protected Timer timer;
-	protected Dni dni;
+	protected RepozytoriumDni dni;
 	
-	public Alarmy(Dni dni)
+	public Alarmy(RepozytoriumDni dni)
 	{	
 		this.dni = dni;
 		

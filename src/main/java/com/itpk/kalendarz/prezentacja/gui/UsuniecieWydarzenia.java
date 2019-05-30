@@ -1,15 +1,14 @@
-package com.itpk.kalendarz.gui;
+package com.itpk.kalendarz.prezentacja.gui;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.NumberFormatter;
 
-import com.itpk.kalendarz.logika.Dni;
+import com.itpk.kalendarz.logika.RepozytoriumDni;
 
 import javax.swing.SpringLayout;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JFormattedTextField;
 import javax.swing.JButton;
 
@@ -31,7 +30,7 @@ public class UsuniecieWydarzenia extends JFrame
 	private JLabel podpis1;
 	private JLabel podpis2;
 
-	public UsuniecieWydarzenia(Dni dni)
+	public UsuniecieWydarzenia(RepozytoriumDni dni)
 	{	
 		setTitle("Usuwanie wydarzeń starszych niż...");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

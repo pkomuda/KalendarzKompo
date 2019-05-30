@@ -1,4 +1,4 @@
-package com.itpk.kalendarz.gui;
+package com.itpk.kalendarz.prezentacja.gui;
 
 import java.awt.BorderLayout;
 
@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.itpk.kalendarz.logika.Dni;
+import com.itpk.kalendarz.logika.RepozytoriumDni;
 import com.itpk.kalendarz.logika.Wydarzenie;
 
 import javax.swing.JList;
@@ -24,7 +24,7 @@ public class FiltrowanieWydarzen extends JFrame
 	private JPanel panel_1;
 	private JButton przycisk;
 
-	public FiltrowanieWydarzen(Dni dni)
+	public FiltrowanieWydarzen(RepozytoriumDni dni)
 	{
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

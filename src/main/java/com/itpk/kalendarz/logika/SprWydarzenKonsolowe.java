@@ -5,7 +5,7 @@ import java.util.Calendar;
 
 public class SprWydarzenKonsolowe extends SprWydarzen
 {
-	public SprWydarzenKonsolowe(Dni dni, Calendar kiedy, int zaIle)
+	public SprWydarzenKonsolowe(RepozytoriumDni dni, Calendar kiedy, int zaIle)
 	{
 		super(dni, kiedy, zaIle);
 	}

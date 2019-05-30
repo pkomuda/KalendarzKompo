@@ -1,4 +1,4 @@
-package com.itpk.kalendarz.gui;
+package com.itpk.kalendarz.prezentacja.gui;
 
 import java.text.NumberFormat;
 import java.text.ParseException;

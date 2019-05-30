@@ -1,18 +1,18 @@
-package com.itpk.kalendarz.gui;
+package com.itpk.kalendarz.prezentacja.gui;
 
 import java.util.Calendar;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.swing.JOptionPane;
 
-import com.itpk.kalendarz.logika.Dni;
+import com.itpk.kalendarz.logika.RepozytoriumDni;
 import com.itpk.kalendarz.logika.Dzwieki;
 import com.itpk.kalendarz.logika.SprWydarzen;
 import com.itpk.kalendarz.logika.Wydarzenie;
 
 public class SprWydarzenGraficzne extends SprWydarzen
 {
-	public SprWydarzenGraficzne(Dni dni, Calendar kiedy, int zaIle)
+	public SprWydarzenGraficzne(RepozytoriumDni dni, Calendar kiedy, int zaIle)
 	{
 		super(dni, kiedy, zaIle);
 	}

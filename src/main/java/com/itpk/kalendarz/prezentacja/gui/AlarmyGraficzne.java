@@ -1,11 +1,11 @@
-package com.itpk.kalendarz.gui;
+package com.itpk.kalendarz.prezentacja.gui;
 
 import com.itpk.kalendarz.logika.Alarmy;
-import com.itpk.kalendarz.logika.Dni;
+import com.itpk.kalendarz.logika.RepozytoriumDni;
 
 public class AlarmyGraficzne extends Alarmy
 {	
-	public AlarmyGraficzne(Dni dni)
+	public AlarmyGraficzne(RepozytoriumDni dni)
 	{
 		super(dni);
 	}
