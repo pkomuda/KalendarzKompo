@@ -48,23 +48,23 @@ public class Kalendarz extends JFrame
 	private ZapisDoICS zapisDoICS;
 	private JMenuItem usuwanieWydarzen;
 	private JMenuItem mntmFiltrowanieWydarze;
+	private JMenuItem zBazy;
+	private JMenuItem doBazy;
+	private JMenuItem doXML;
+	private JMenuItem zXML;
 
 	public static void main(String[] args)
 	{
-		EventQueue.invokeLater(new Runnable()
-		{
-			public void run()
+		EventQueue.invokeLater(() -> {
+			try
 			{
-				try
-				{
-					Kalendarz frame = new Kalendarz();
-					frame.setLocationRelativeTo(frame);
-					frame.setVisible(true);
-				}
-				catch (Exception e)
-				{
-					e.printStackTrace();
-				}
+				Kalendarz frame = new Kalendarz();
+				frame.setLocationRelativeTo(frame);
+				frame.setVisible(true);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
 			}
 		});
 	}
@@ -84,6 +84,21 @@ public class Kalendarz extends JFrame
 		importuj = new JMenu("Importuj...");
 		plik.add(importuj);
 		
+		zBazy = new JMenuItem("Z bazy danych");
+		zBazy.addActionListener(e ->
+		{
+			OdczytSQL odczyt = new OdczytSQL();
+			if (odczyt.czytajWydarzenia() != null)
+			{
+				dni.dodajWszystkieWydarzenia(odczyt.czytajWydarzenia());
+				JOptionPane.showMessageDialog(null, "Importowanie zakończone pomyślnie.", "", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		importuj.add(zBazy);
+		
+		zXML = new JMenuItem("Z .xml");
+		importuj.add(zXML);
+		
 		eksportuj = new JMenu("Eksportuj...");
 		plik.add(eksportuj);
 		
@@ -93,6 +108,24 @@ public class Kalendarz extends JFrame
 			zapisDoICS = new ZapisDoICS(dni);
 			zapisDoICS.zapisz("eksport");
 		});
+		
+		doBazy = new JMenuItem("Do bazy danych");
+		doBazy.addActionListener(e ->
+		{
+			ZapisDoSQL zapis = new ZapisDoSQL();
+			boolean sukces = true;
+			for (Wydarzenie w : dni.wszystkieWydarzenia())
+			{
+				if (!zapis.dodajWydarzenie(w))
+					sukces = false;
+			}
+			if (sukces)
+				JOptionPane.showMessageDialog(null, "Eksportowanie zakończone pomyślnie.", "", JOptionPane.INFORMATION_MESSAGE);
+		});
+		eksportuj.add(doBazy);
+		
+		doXML = new JMenuItem("Do .xml");
+		eksportuj.add(doXML);
 		eksportuj.add(doICS);
 		
 		usuwanieWydarzen = new JMenuItem("Usuwanie wydarzeń");
@@ -141,25 +174,20 @@ public class Kalendarz extends JFrame
 		setContentPane(panel);
 		
 		dni = new Dni();
-		Dzien d1 = new Dzien(29, 4, 2019);
-		Dzien d2 = new Dzien(30, 4, 2019);
-		Dzien d3 = new Dzien(5, 5, 2019);
-		Wydarzenie w1 = new Wydarzenie("Spotkanie - za godzine", "Łódź", new GregorianCalendar(2019, 4, 29),16,00,Przypomnienie.GODZINA_PRZED);
-		Wydarzenie w2 = new Wydarzenie("Spotkanie - jutro", "Łódź", new GregorianCalendar(2019, 4, 30),23, 13);
-		Wydarzenie w3 = new Wydarzenie("Spotkanie - za tydzień", "Łódź", new GregorianCalendar(2019,5,5),12,00,Przypomnienie.TYDZIEN_PRZED);
-		d1.dodaj(w1);
-		d2.dodaj(w2);
-		d3.dodaj(w3);
-        dni.dodaj(d1);
-        dni.dodaj(d2);
-        dni.dodaj(d3);
+//		Dzien d1 = new Dzien(29, 4, 2019);
+//		Dzien d2 = new Dzien(30, 4, 2019);
+//		Dzien d3 = new Dzien(5, 5, 2019);
+//		Wydarzenie w1 = new Wydarzenie("Spotkanie - za godzine", "Łódź", new GregorianCalendar(2019, 4, 29),16,00,Przypomnienie.GODZINA_PRZED);
+//		Wydarzenie w2 = new Wydarzenie("Spotkanie - jutro", "Łódź", new GregorianCalendar(2019, 4, 30),23, 13);
+//		Wydarzenie w3 = new Wydarzenie("Spotkanie - za tydzień", "Łódź", new GregorianCalendar(2019,5,5),12,00,Przypomnienie.TYDZIEN_PRZED);
+//		d1.dodaj(w1);
+//		d2.dodaj(w2);
+//		d3.dodaj(w3);
+//        dni.dodaj(d1);
+//        dni.dodaj(d2);
+//        dni.dodaj(d3);
         Alarmy alarmy = new AlarmyGraficzne(dni);
 //        alarmy.powiadom();
-//		ZapisDoSQL z = new ZapisDoSQL();
-//		//z.dodajWydarzenie(w1);
-//		OdczytSQL o = new OdczytSQL();
-//		for (Wydarzenie w : o.czytajWydarzenia())
-//			System.out.println(w);
         
 		calendar = new JCalendar();
 		calendar.getDayChooser().setWeekOfYearVisible(false);

@@ -124,12 +124,22 @@ public class Dni implements Kolekcja<Dzien>
     
     public List<Wydarzenie> wydarzeniaZawierajace (String s)
     {
-    	List<Wydarzenie> wybrane=new ArrayList<Wydarzenie>();
+    	List<Wydarzenie> wybrane=new ArrayList<>();
     	for (Dzien dzien : listaDni) 
     	{
     		wybrane.addAll(dzien.wydarzeniaZawierajace(s));
 		}
     	return wybrane;
+    }
+
+    public List<Wydarzenie> wszystkieWydarzenia ()
+    {
+        List<Wydarzenie> wybrane = new ArrayList<>();
+        for (Dzien dzien : listaDni)
+        {
+            wybrane.addAll(dzien.getLista());
+        }
+        return wybrane;
     }
 
     @Override
