@@ -2,28 +2,23 @@ package com.itpk.kalendarz.prezentacja.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Calendar;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
-import com.itpk.kalendarz.dane.OdczytSQL;
-import com.itpk.kalendarz.dane.ZapisDoICS;
-import com.itpk.kalendarz.dane.ZapisDoSQL;
-import com.itpk.kalendarz.dane.ZapisDoXML;
+import com.itpk.kalendarz.dane.*;
 import com.itpk.kalendarz.logika.Alarmy;
 import com.itpk.kalendarz.logika.RepozytoriumDni;
 import com.itpk.kalendarz.logika.Wydarzenie;
+import com.itpk.kalendarz.logika.wyjatki.NieprawidlowyXMLWyjatek;
 import com.toedter.calendar.JCalendar;
-import javax.swing.JColorChooser;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JMenu;
 
 public class Kalendarz extends JFrame
 {
@@ -76,6 +71,25 @@ public class Kalendarz extends JFrame
 		importuj.add(zBazy);
 		
 		zXML = new JMenuItem("Z .xml");
+		zXML.addActionListener(e ->
+		{
+			OdczytXML odczytXML = new OdczytXML();
+			JFileChooser wyborPliku = new JFileChooser(".");
+			FileNameExtensionFilter filtr = new FileNameExtensionFilter("pliki xml", "xml");
+			wyborPliku.setFileFilter(filtr);
+			int otrzymany = wyborPliku.showOpenDialog(null);
+			if (otrzymany == JFileChooser.APPROVE_OPTION)
+			{
+				try
+				{
+					dni.dodajWszystkieWydarzenia(odczytXML.czytaj(wyborPliku.getSelectedFile().toString()));
+				}
+				catch (NieprawidlowyXMLWyjatek ex)
+				{
+					JOptionPane.showMessageDialog(null, "Nieprawidłowy plik", "", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		});
 		importuj.add(zXML);
 		
 		eksportuj = new JMenu("Eksportuj...");
@@ -107,7 +121,10 @@ public class Kalendarz extends JFrame
 		doXML.addActionListener(e ->
 		{
 			ZapisDoXML zapisDoXML = new ZapisDoXML(dni);
-			zapisDoXML.zapisz("eksport.xml");
+			JFileChooser wyborPliku = new JFileChooser(".");
+			int otrzymany = wyborPliku.showSaveDialog(null);
+			if (otrzymany == JFileChooser.APPROVE_OPTION)
+				zapisDoXML.zapisz(wyborPliku.getSelectedFile() + ".xml");
 		});
 		eksportuj.add(doXML);
 		eksportuj.add(doICS);
