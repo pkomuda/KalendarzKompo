@@ -12,11 +12,14 @@ public class Wydarzenie
     private Boolean czyGodzina;
     private Boolean czyMiejsce;
     private Przypomnienie przypomnienie;
-    boolean czyPowiadomiono;
+    private boolean czyPowiadomiono;
+    private int id;
+    private static int licznik=0;
   
     public Wydarzenie(String opis, String miejsce, Calendar data)
     {
-    	czyMiejsce=(miejsce.length()!=0?true:false); 
+    	czyMiejsce=(miejsce.length()!=0?true:false);
+    	this.id=licznik;
         this.opis = opis;
         this.miejsce = miejsce;
         this.data = new GregorianCalendar(data.get(Calendar.YEAR),data.get(Calendar.MONTH),data.get(Calendar.DAY_OF_MONTH),0,0);
@@ -27,11 +30,13 @@ public class Wydarzenie
         if(this.data.compareTo(teraz)<=0)
         	this.czyPowiadomiono = true;
         else this.czyPowiadomiono = false;
+        licznik++;
     }
     
     public Wydarzenie(String opis, String miejsce, Calendar data,int godzina, int minuta,Przypomnienie przypomnienie)
     {
     	czyMiejsce=(miejsce.length()!=0?true:false);
+        this.id=licznik;
         this.opis = opis;
         this.miejsce = miejsce;
         this.data = new GregorianCalendar(data.get(Calendar.YEAR),data.get(Calendar.MONTH),data.get(Calendar.DAY_OF_MONTH),godzina,minuta);
@@ -44,11 +49,13 @@ public class Wydarzenie
         if(this.data.compareTo(teraz)<=0)
         	this.czyPowiadomiono = true;
         else this.czyPowiadomiono = false;
+        licznik++;
     }
     
     public Wydarzenie(String opis, String miejsce, Calendar data,int godzina, int minuta)
     {
     	czyMiejsce=(miejsce.length()!=0?true:false);
+        this.id=licznik;
         this.opis = opis;
         this.miejsce = miejsce;
         this.data = new GregorianCalendar(data.get(Calendar.YEAR),data.get(Calendar.MONTH),data.get(Calendar.DAY_OF_MONTH),godzina,minuta);
@@ -61,10 +68,12 @@ public class Wydarzenie
         if(this.data.compareTo(teraz)<=0)
         	this.czyPowiadomiono = true;
         else this.czyPowiadomiono = false;
+        licznik++;
     }
 
     public Wydarzenie()
     {
+        this.id=licznik;
         this.opis = "";
         this.miejsce = "";
         this.czyMiejsce=false;
@@ -76,7 +85,9 @@ public class Wydarzenie
         if(this.data.compareTo(teraz)<=0)
         	this.czyPowiadomiono = true;
         else this.czyPowiadomiono = false;
+        licznik++;
     }
+
 
     /*
     public Wydarzenie(String opis, Calendar data, Timer godzina)
@@ -216,11 +227,11 @@ public class Wydarzenie
     public String toString()
     {
     	if(czyGodzina&&czyMiejsce)
-    		return Kalendarz.dodajZero(getGodzina())+":"+Kalendarz.dodajZero(getMinuta())+"\n"+opis+" - "+miejsce;
+    		return id+")"+Kalendarz.dodajZero(getGodzina())+":"+Kalendarz.dodajZero(getMinuta())+"\n"+opis+" - "+miejsce;
     	else if(czyMiejsce)
-    		return opis+" - "+miejsce;
+    		return id+")"+opis+" - "+miejsce;
     	else if(czyGodzina)
-    		return Kalendarz.dodajZero(getGodzina())+":"+Kalendarz.dodajZero(getMinuta())+"\n"+opis;
+    		return id+")"+Kalendarz.dodajZero(getGodzina())+":"+Kalendarz.dodajZero(getMinuta())+"\n"+opis;
     	else return opis;
     }
     
@@ -240,4 +251,6 @@ public class Wydarzenie
     		return toString();
     	}
     }
+
+
 }

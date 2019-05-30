@@ -29,7 +29,7 @@ public abstract class SprWydarzen extends TimerTask
 			{
 				if(((zaIle==0 && w.getPrzypomnienie()==Przypomnienie.GODZINA_PRZED && w.getCzyGodzina() && w.getData().compareTo(teraz)>0 && w.getData().compareTo(kiedy)<0) ||
 						(zaIle==1 && w.getPrzypomnienie()==Przypomnienie.DZIEN_PRZED) ||
-						(zaIle==7 && w.getPrzypomnienie()==Przypomnienie.TYDZIEN_PRZED))&& (!w.czyPowiadomiono))
+						(zaIle==7 && w.getPrzypomnienie()==Przypomnienie.TYDZIEN_PRZED))&& (!w.getCzyPowiadomiono()))
 				{
 					w.setCzyPowiadomiono(true);
 					powiadomienie(w);
