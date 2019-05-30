@@ -63,6 +63,13 @@ public class Dni implements Kolekcja<Dzien>
     	else
     		return null;
     }
+
+    public boolean dodajWydarzenie(Wydarzenie w)
+    {
+        if(!listaDni.contains(new Dzien(w.getData())))
+            dodaj(new Dzien(w.getData()));
+        return getDzien(w.getData()).dodaj(w);
+    }
     
     public boolean dodajWydarzenie(String opis, String miejsce, Calendar obecna,int godzina, int minuta)
     {
@@ -76,6 +83,14 @@ public class Dni implements Kolekcja<Dzien>
     	if(!listaDni.contains(new Dzien(obecna)))
     		dodaj(new Dzien(obecna));
     	return getDzien(obecna).dodaj(opis, miejsce, obecna);
+    }
+
+    public void dodajWszystkieWydarzenia(List<Wydarzenie> wydarzenia)
+    {
+        for (Wydarzenie w:wydarzenia)
+        {
+               dodajWydarzenie(w);
+        }
     }
     
     public boolean usunWydarzenie(Calendar obecna,int indeks)
