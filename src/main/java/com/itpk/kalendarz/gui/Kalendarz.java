@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.itpk.kalendarz.dane.ZapisDoICS;
+import com.itpk.kalendarz.dane.ZapisDoSQL;
 import com.itpk.kalendarz.logika.Alarmy;
 import com.itpk.kalendarz.logika.Dni;
 import com.itpk.kalendarz.logika.Dzien;
@@ -48,7 +49,8 @@ public class Kalendarz extends JFrame
 	private JMenuItem mntmFiltrowanieWydarze;
 
 	public static void main(String[] args)
-	{	
+	{
+		ZapisDoSQL z = new ZapisDoSQL();
 		EventQueue.invokeLater(new Runnable()
 		{
 			public void run()
@@ -152,7 +154,7 @@ public class Kalendarz extends JFrame
         dni.dodaj(d2);
         dni.dodaj(d3);
         Alarmy alarmy = new AlarmyGraficzne(dni);
-        //alarmy.powiadom();
+//        alarmy.powiadom();
         
 		calendar = new JCalendar();
 		calendar.getDayChooser().setWeekOfYearVisible(false);

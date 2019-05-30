@@ -32,3 +32,5 @@ KalendarzKompo.iml
 target/
 
 *.ics
+*.db
+*.sqlite
