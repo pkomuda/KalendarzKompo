@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 import com.itpk.kalendarz.dane.OdczytSQL;
 import com.itpk.kalendarz.dane.ZapisDoICS;
 import com.itpk.kalendarz.dane.ZapisDoSQL;
+import com.itpk.kalendarz.dane.ZapisDoXML;
 import com.itpk.kalendarz.logika.Alarmy;
 import com.itpk.kalendarz.logika.Dni;
 import com.itpk.kalendarz.logika.Dzien;
@@ -125,6 +126,11 @@ public class Kalendarz extends JFrame
 		eksportuj.add(doBazy);
 		
 		doXML = new JMenuItem("Do .xml");
+		doXML.addActionListener(e ->
+		{
+			ZapisDoXML zapisDoXML = new ZapisDoXML(dni);
+			zapisDoXML.zapisz("eksport.xml");
+		});
 		eksportuj.add(doXML);
 		eksportuj.add(doICS);
 		
