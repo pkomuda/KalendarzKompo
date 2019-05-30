@@ -105,10 +105,13 @@ public class Dzien implements Kolekcja<Wydarzenie>, Comparable<Dzien>
     @Override
     public String toString()
     {
-        return "Dzien{" +
-                "data=" + data +
-                ", wydarzenia=" + wydarzenia +
-                '}';
+        StringBuilder wszystkie= new StringBuilder();
+        wszystkie.append("\n").append(getDataTab()[0]).append("-").append(getDataTab()[1]).append("-").append(getDataTab()[2]);
+        for (Wydarzenie w:wydarzenia)
+        {
+            wszystkie.append("\n\t").append(wydarzenia.indexOf(w)).append(") ").append(w.toString());
+        }
+        return wszystkie.toString();
     }
 
     @Override

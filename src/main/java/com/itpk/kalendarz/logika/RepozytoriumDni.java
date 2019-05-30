@@ -145,9 +145,13 @@ public class RepozytoriumDni implements Kolekcja<Dzien>
     @Override
     public String toString()
     {
-        return "RepozytoriumDni{" +
-                "listaDni=" + listaDni +
-                '}';
+        StringBuilder wszystko=new StringBuilder();
+        wszystko.append("WYDARZENIA\n");
+        for (Dzien d:listaDni)
+        {
+            wszystko.append(d.toString());
+        }
+        return "\n"+wszystko.toString();
     }
     
     public static String oProgramie()
