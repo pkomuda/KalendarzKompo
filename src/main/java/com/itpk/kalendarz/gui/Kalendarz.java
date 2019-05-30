@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.itpk.kalendarz.dane.OdczytSQL;
 import com.itpk.kalendarz.dane.ZapisDoICS;
 import com.itpk.kalendarz.dane.ZapisDoSQL;
 import com.itpk.kalendarz.logika.Alarmy;
@@ -50,7 +51,6 @@ public class Kalendarz extends JFrame
 
 	public static void main(String[] args)
 	{
-		ZapisDoSQL z = new ZapisDoSQL();
 		EventQueue.invokeLater(new Runnable()
 		{
 			public void run()
@@ -155,6 +155,11 @@ public class Kalendarz extends JFrame
         dni.dodaj(d3);
         Alarmy alarmy = new AlarmyGraficzne(dni);
 //        alarmy.powiadom();
+//		ZapisDoSQL z = new ZapisDoSQL();
+//		//z.dodajWydarzenie(w1);
+//		OdczytSQL o = new OdczytSQL();
+//		for (Wydarzenie w : o.czytajWydarzenia())
+//			System.out.println(w);
         
 		calendar = new JCalendar();
 		calendar.getDayChooser().setWeekOfYearVisible(false);

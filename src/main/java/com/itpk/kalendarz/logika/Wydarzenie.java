@@ -1,8 +1,11 @@
 package com.itpk.kalendarz.logika;
+import java.sql.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import com.itpk.kalendarz.gui.Kalendarz;
+
+import javax.xml.crypto.Data;
 
 public class Wydarzenie
 {
@@ -13,13 +16,10 @@ public class Wydarzenie
     private Boolean czyMiejsce;
     private Przypomnienie przypomnienie;
     private boolean czyPowiadomiono;
-    private int id;
-    private static int licznik=0;
   
     public Wydarzenie(String opis, String miejsce, Calendar data)
     {
     	czyMiejsce=(miejsce.length()!=0?true:false);
-    	this.id=licznik;
         this.opis = opis;
         this.miejsce = miejsce;
         this.data = new GregorianCalendar(data.get(Calendar.YEAR),data.get(Calendar.MONTH),data.get(Calendar.DAY_OF_MONTH),0,0);
@@ -30,13 +30,11 @@ public class Wydarzenie
         if(this.data.compareTo(teraz)<=0)
         	this.czyPowiadomiono = true;
         else this.czyPowiadomiono = false;
-        licznik++;
     }
     
     public Wydarzenie(String opis, String miejsce, Calendar data,int godzina, int minuta,Przypomnienie przypomnienie)
     {
     	czyMiejsce=(miejsce.length()!=0?true:false);
-        this.id=licznik;
         this.opis = opis;
         this.miejsce = miejsce;
         this.data = new GregorianCalendar(data.get(Calendar.YEAR),data.get(Calendar.MONTH),data.get(Calendar.DAY_OF_MONTH),godzina,minuta);
@@ -49,13 +47,26 @@ public class Wydarzenie
         if(this.data.compareTo(teraz)<=0)
         	this.czyPowiadomiono = true;
         else this.czyPowiadomiono = false;
-        licznik++;
+    }
+
+    public Wydarzenie(String opis, String miejsce, Calendar data,Przypomnienie przypomnienie)
+    {
+        czyMiejsce=(miejsce.length()!=0?true:false);
+        this.opis = opis;
+        this.miejsce = miejsce;
+        this.data = data;
+        this.czyGodzina=true;
+        this.przypomnienie = przypomnienie;
+
+        Calendar teraz=new GregorianCalendar();
+        if(this.data.compareTo(teraz)<=0)
+            this.czyPowiadomiono = true;
+        else this.czyPowiadomiono = false;
     }
     
     public Wydarzenie(String opis, String miejsce, Calendar data,int godzina, int minuta)
     {
     	czyMiejsce=(miejsce.length()!=0?true:false);
-        this.id=licznik;
         this.opis = opis;
         this.miejsce = miejsce;
         this.data = new GregorianCalendar(data.get(Calendar.YEAR),data.get(Calendar.MONTH),data.get(Calendar.DAY_OF_MONTH),godzina,minuta);
@@ -68,12 +79,10 @@ public class Wydarzenie
         if(this.data.compareTo(teraz)<=0)
         	this.czyPowiadomiono = true;
         else this.czyPowiadomiono = false;
-        licznik++;
     }
 
     public Wydarzenie()
     {
-        this.id=licznik;
         this.opis = "";
         this.miejsce = "";
         this.czyMiejsce=false;
@@ -85,27 +94,8 @@ public class Wydarzenie
         if(this.data.compareTo(teraz)<=0)
         	this.czyPowiadomiono = true;
         else this.czyPowiadomiono = false;
-        licznik++;
     }
 
-
-    /*
-    public Wydarzenie(String opis, Calendar data, Timer godzina)
-    {
-        this.opis = opis;
-        this.data = data;
-        this.godzina = godzina;
-        this.przypomnienie = Przypomnienie.DZIEN_PRZED;
-    }
-
-    public Wydarzenie(String opis, String miejsce, Calendar data)
-    {
-        this.opis = opis;
-        this.miejsce = miejsce;
-        this.data = data;
-        this.przypomnienie = Przypomnienie.DZIEN_PRZED;
-    }
-    */
 
     public String getOpis()
     {
@@ -131,7 +121,22 @@ public class Wydarzenie
     {
         return data;
     }
-    
+
+    public boolean isCzyPowiadomiono()
+    {
+        return czyPowiadomiono;
+    }
+
+    public Boolean getCzyMiejsce()
+    {
+        return czyMiejsce;
+    }
+
+    public String getDataSQL()
+    {
+        return getRok() + "-" + Kalendarz.dodajZero(getMiesiac()+1) + "-" + Kalendarz.dodajZero(getDzien()) + " " + Kalendarz.dodajZero(getGodzina()) + ":" + Kalendarz.dodajZero(getMinuta());
+    }
+
     public int[] getDataTab()
     {
         return new int[]{data.get(Calendar.YEAR), data.get(Calendar.MONTH), data.get(Calendar.DAY_OF_MONTH)};
@@ -227,11 +232,11 @@ public class Wydarzenie
     public String toString()
     {
     	if(czyGodzina&&czyMiejsce)
-    		return id+")"+Kalendarz.dodajZero(getGodzina())+":"+Kalendarz.dodajZero(getMinuta())+"\n"+opis+" - "+miejsce;
+    		return Kalendarz.dodajZero(getGodzina())+":"+Kalendarz.dodajZero(getMinuta())+"\n"+opis+" - "+miejsce;
     	else if(czyMiejsce)
-    		return id+")"+opis+" - "+miejsce;
+    		return opis+" - "+miejsce;
     	else if(czyGodzina)
-    		return id+")"+Kalendarz.dodajZero(getGodzina())+":"+Kalendarz.dodajZero(getMinuta())+"\n"+opis;
+    		return Kalendarz.dodajZero(getGodzina())+":"+Kalendarz.dodajZero(getMinuta())+"\n"+opis;
     	else return opis;
     }
     

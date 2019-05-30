@@ -1,38 +1,47 @@
 package com.itpk.kalendarz.dane;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import com.itpk.kalendarz.logika.Wydarzenie;
 
-public class ZapisDoSQL
+import java.sql.*;
+
+public class ZapisDoSQL extends KomunikacjaSQL
 {
-    public static final String STEROWNIK = "org.sqlite.JDBC";
-    public static final String ADRES = "jdbc:sqlite:kalendarz.sqlite";
-    private Connection polaczenie;
-    private Statement zapytanie;
-
     public ZapisDoSQL()
     {
-        try
-        {
-            Class.forName(ZapisDoSQL.STEROWNIK);
-        }
-        catch (ClassNotFoundException e)
-        {
-            System.err.println("Brak sterownika JDBC");
-            e.printStackTrace();
-        }
+        super();
+        stworzTabele();
+    }
 
+    public boolean stworzTabele()
+    {
+        String createCzytelnicy = "CREATE TABLE IF NOT EXISTS wydarzenia (opis text, miejsce text, data text, przypomnienie text)";
         try
         {
-            polaczenie = DriverManager.getConnection(ADRES);
-            zapytanie = polaczenie.createStatement();
+            zapytanie.execute(createCzytelnicy);
         }
         catch (SQLException e)
         {
-            System.err.println("Problem z otwarciem polaczenia");
+            System.err.println("Blad przy tworzeniu tabeli");
             e.printStackTrace();
+            return false;
         }
+        return true;
+    }
+
+    public boolean dodajWydarzenie(Wydarzenie w) {
+        try {
+            PreparedStatement przygZapytanie = polaczenie.prepareStatement(
+                    "insert into wydarzenia values (?,?,?,?);");
+            przygZapytanie.setString(1, w.getOpis());
+            przygZapytanie.setString(2, w.getMiejsce());
+            przygZapytanie.setString(3, w.getDataSQL());
+            przygZapytanie.setString(4, w.getPrzypomnienie().name());
+            przygZapytanie.execute();
+        } catch (SQLException e) {
+            System.err.println("Blad przy wstawianiu czytelnika");
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }
