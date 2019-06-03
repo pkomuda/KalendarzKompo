@@ -58,7 +58,7 @@ public class Main
                             dzien = scanner.nextInt();
                         }
                         while (miesiac < 1 || miesiac > 12 || dzien < 1 || dzien > 31);
-                        dni.dodajWydarzenie(opis, miejsce, new GregorianCalendar(rok, miesiac, dzien));
+                        dni.dodajWydarzenie(opis, miejsce, new GregorianCalendar(rok, miesiac-1, dzien));
                         break;
 
                     case 2:
@@ -68,7 +68,7 @@ public class Main
                         dzien = scanner.nextInt();
                         System.out.print("Nr wydarzenia: ");
                         indeks = scanner.nextInt();
-                        dni.usunWydarzenie(new GregorianCalendar(rok, miesiac, dzien), indeks);
+                        dni.usunWydarzenie(new GregorianCalendar(rok, miesiac-1, dzien), indeks);
                         break;
 
                     case 3:
@@ -80,7 +80,7 @@ public class Main
                         rok = scanner.nextInt();
                         miesiac = scanner.nextInt();
                         dzien = scanner.nextInt();
-                        dni.usunWydarzeniaStarszeNiz(dzien, miesiac, rok);
+                        dni.usunWydarzeniaStarszeNiz(dzien, miesiac-1, rok);
                         break;
 
                     case 5:

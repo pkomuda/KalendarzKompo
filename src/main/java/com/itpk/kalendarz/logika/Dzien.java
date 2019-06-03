@@ -104,7 +104,7 @@ public class Dzien implements Kolekcja<Wydarzenie>, Comparable<Dzien>
     public String toString()
     {
         StringBuilder wszystkie= new StringBuilder();
-        wszystkie.append("\n").append(getDataTab()[0]).append("-").append(getDataTab()[1]).append("-").append(getDataTab()[2]);
+        wszystkie.append("\n").append(getDataTab()[0]).append("-").append(RepozytoriumDni.dodajZero(getDataTab()[1]+1)).append("-").append(RepozytoriumDni.dodajZero(getDataTab()[2]));
         for (Wydarzenie w:wydarzenia)
         {
             wszystkie.append("\n\t").append(wydarzenia.indexOf(w)).append(") ").append(w.toString());
