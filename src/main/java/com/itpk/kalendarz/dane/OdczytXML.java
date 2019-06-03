@@ -24,10 +24,12 @@ public class OdczytXML
             Scanner skaner = new Scanner(plik);
             if (plik.length()==0 || !skaner.nextLine().contains("<?xml version=\"1.0\" encoding=\"UTF-8\"?>"))
                 throw new NieprawidlowyXMLWyjatek();
+            if (!skaner.nextLine().contains("<java version=\""))
+                throw new NieprawidlowyXMLWyjatek();
             while (skaner.hasNextLine())
             {
                 String linia = skaner.nextLine();
-                if(linia.contains("id=\"Wydarzenie"))
+                if(linia.contains("<object class=\"com.itpk.kalendarz.logika.Wydarzenie\" id=\"Wydarzenie"))
                     iloscWydarzen++;
             }
         }
