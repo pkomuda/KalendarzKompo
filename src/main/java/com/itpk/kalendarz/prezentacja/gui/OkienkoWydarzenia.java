@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.itpk.kalendarz.logika.RepozytoriumDni;
 import com.itpk.kalendarz.logika.Wydarzenie;
 import com.itpk.kalendarz.logika.wyjatki.BrakWydarzenWyjatek;
 
@@ -48,7 +49,7 @@ public class OkienkoWydarzenia extends JFrame
 		/***********Naglowek*****************/
 		naglowek = new JLabel("naglowek");
 		naglowek.setFont(new Font("Lucida Grande", Font.BOLD, 24));
-        naglowek.setText("Wydarzenia z dnia " + Kalendarz.dodajZero(glowneOkno.getDzienMiesiaca()) + "." + Kalendarz.dodajZero(glowneOkno.getData().get(Calendar.MONTH)+1) + "." + glowneOkno.getData().get(Calendar.YEAR));
+        naglowek.setText("Wydarzenia z dnia " + RepozytoriumDni.dodajZero(glowneOkno.getDzienMiesiaca()) + "." + RepozytoriumDni.dodajZero(glowneOkno.getData().get(Calendar.MONTH)+1) + "." + glowneOkno.getData().get(Calendar.YEAR));
 		panel.add(naglowek, BorderLayout.NORTH);
 		
 		obecna = new GregorianCalendar();
@@ -116,11 +117,6 @@ public class OkienkoWydarzenia extends JFrame
 				UstawieniaWydarzenia okienko = new DodanieWydarzenia(getThis(), listModel);
 				okienko.setLocationRelativeTo(okienko);
 				okienko.setVisible(true);
-//				for(Wydarzenie wydarzenie : glowneOkno.getDni().getDzien(obecna).getLista())
-//				{
-//					System.out.print(wydarzenie+" ");
-//					System.out.println(wydarzenie.getPrzypomnienie());
-//				}
 			}
 		});
 		panelPrzyciski.add(dodajPrzycisk);

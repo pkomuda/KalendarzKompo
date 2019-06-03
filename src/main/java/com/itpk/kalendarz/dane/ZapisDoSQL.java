@@ -2,7 +2,8 @@ package com.itpk.kalendarz.dane;
 
 import com.itpk.kalendarz.logika.Wydarzenie;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class ZapisDoSQL extends KomunikacjaSQL
 {

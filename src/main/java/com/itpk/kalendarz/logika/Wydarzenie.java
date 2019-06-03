@@ -1,8 +1,7 @@
 package com.itpk.kalendarz.logika;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
-import com.itpk.kalendarz.prezentacja.gui.Kalendarz;
 
 public class Wydarzenie
 {
@@ -93,7 +92,6 @@ public class Wydarzenie
         else this.czyPowiadomiono = false;
     }
 
-
     public String getOpis()
     {
         return opis;
@@ -119,11 +117,6 @@ public class Wydarzenie
         return data;
     }
 
-    public boolean isCzyPowiadomiono()
-    {
-        return czyPowiadomiono;
-    }
-
     public Boolean getCzyMiejsce()
     {
         return czyMiejsce;
@@ -131,7 +124,7 @@ public class Wydarzenie
 
     public String getDataSQL()
     {
-        return getRok() + "-" + Kalendarz.dodajZero(getMiesiac()+1) + "-" + Kalendarz.dodajZero(getDzien()) + " " + Kalendarz.dodajZero(getGodzina()) + ":" + Kalendarz.dodajZero(getMinuta());
+        return getRok() + "-" + RepozytoriumDni.dodajZero(getMiesiac()+1) + "-" + RepozytoriumDni.dodajZero(getDzien()) + " " + RepozytoriumDni.dodajZero(getGodzina()) + ":" + RepozytoriumDni.dodajZero(getMinuta());
     }
 
     public int[] getDataTab()
@@ -229,11 +222,11 @@ public class Wydarzenie
     public String toString()
     {
     	if(czyGodzina&&czyMiejsce)
-    		return Kalendarz.dodajZero(getGodzina())+":"+Kalendarz.dodajZero(getMinuta())+"\n"+opis+" - "+miejsce;
+    		return RepozytoriumDni.dodajZero(getGodzina())+":"+RepozytoriumDni.dodajZero(getMinuta())+" "+opis+" - "+miejsce;
     	else if(czyMiejsce)
     		return opis+" - "+miejsce;
     	else if(czyGodzina)
-    		return Kalendarz.dodajZero(getGodzina())+":"+Kalendarz.dodajZero(getMinuta())+"\n"+opis;
+    		return RepozytoriumDni.dodajZero(getGodzina())+":"+RepozytoriumDni.dodajZero(getMinuta())+" "+opis;
     	else return opis;
     }
     
@@ -253,6 +246,4 @@ public class Wydarzenie
     		return toString();
     	}
     }
-
-
 }

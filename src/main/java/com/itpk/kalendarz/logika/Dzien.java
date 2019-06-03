@@ -1,20 +1,18 @@
 package com.itpk.kalendarz.logika;
 
-import java.util.*;
-
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.Objects;
 
 public class Dzien implements Kolekcja<Wydarzenie>, Comparable<Dzien>
 {
     private Calendar data;
     private List<Wydarzenie> wydarzenia;
-
-    public Dzien()
-    {
-        this.data = new GregorianCalendar();
-//        this.data.set(Calendar.DAY_OF_MONTH, 1);
-        this.wydarzenia = new ArrayList<>();
-    }
 
     public Dzien(Calendar data)
     {

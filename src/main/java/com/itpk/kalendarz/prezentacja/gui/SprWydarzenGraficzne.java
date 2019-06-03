@@ -6,7 +6,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.swing.JOptionPane;
 
 import com.itpk.kalendarz.logika.RepozytoriumDni;
-import com.itpk.kalendarz.logika.Dzwieki;
+import com.itpk.kalendarz.prezentacja.Dzwieki;
 import com.itpk.kalendarz.logika.SprWydarzen;
 import com.itpk.kalendarz.logika.Wydarzenie;
 

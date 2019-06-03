@@ -1,4 +1,7 @@
-package com.itpk.kalendarz.logika;
+package com.itpk.kalendarz.prezentacja;
+
+import com.itpk.kalendarz.logika.Alarmy;
+import com.itpk.kalendarz.logika.RepozytoriumDni;
 
 public class AlarmyKonsolowe extends Alarmy
 {	

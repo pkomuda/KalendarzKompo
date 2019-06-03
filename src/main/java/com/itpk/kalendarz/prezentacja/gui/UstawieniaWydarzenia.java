@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.NumberFormatter;
 
-
 import javax.swing.SpringLayout;
 import javax.swing.JLabel;
 import javax.swing.JFormattedTextField;
@@ -18,7 +17,6 @@ import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-
 
 public abstract class UstawieniaWydarzenia extends JFrame{
 	

@@ -2,7 +2,6 @@ package com.itpk.kalendarz.logika;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import com.itpk.kalendarz.logika.wyjatki.BrakWydarzenWyjatek;
@@ -153,7 +152,12 @@ public class RepozytoriumDni implements Kolekcja<Dzien>
         }
         return "\n"+wszystko.toString();
     }
-    
+
+    public static String dodajZero(int liczba)
+    {
+        return String.format("%02d", liczba);
+    }
+
     public static String oProgramie()
     {
     	return "Autorzy:\nIdalia Tybińkowska 216908\nPrzemysław Komuda 216802";

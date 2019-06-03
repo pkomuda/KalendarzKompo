@@ -2,15 +2,24 @@ package com.itpk.kalendarz.prezentacja.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Calendar;
 
-import javax.swing.*;
+import javax.swing.JColorChooser;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import com.itpk.kalendarz.dane.*;
+import com.itpk.kalendarz.dane.OdczytSQL;
+import com.itpk.kalendarz.dane.OdczytXML;
+import com.itpk.kalendarz.dane.ZapisDoICS;
+import com.itpk.kalendarz.dane.ZapisDoSQL;
+import com.itpk.kalendarz.dane.ZapisDoXML;
 import com.itpk.kalendarz.logika.Alarmy;
 import com.itpk.kalendarz.logika.RepozytoriumDni;
 import com.itpk.kalendarz.logika.Wydarzenie;
@@ -218,10 +227,5 @@ public class Kalendarz extends JFrame
     public RepozytoriumDni getDni()
     {
         return dni;
-    }
-    
-    public static String dodajZero(int liczba)
-    {
-    	return String.format("%02d", liczba);
     }
 }
