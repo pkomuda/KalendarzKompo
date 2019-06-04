@@ -94,7 +94,10 @@ public class RepozytoriumDni implements Kolekcja<Dzien>
     
     public boolean usunWydarzenie(Calendar obecna,int indeks)
     {
-    	return getDzien(obecna).usun(indeks);
+        boolean sprawdz=getDzien(obecna).usun(indeks);
+        if(getDzien(obecna).getLista().size()==0)
+            usun(getDzien(obecna));
+    	return sprawdz;
     }
     
     public void usunWydarzeniaStarszeNiz(int dzien,int miesiac,int rok)
