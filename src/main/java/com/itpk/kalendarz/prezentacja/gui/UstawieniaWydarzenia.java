@@ -18,6 +18,9 @@ import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
+/**
+ * Klasa abstrakcyjna z polami do wpisywania szczegolow wydarzenia
+ */
 public abstract class UstawieniaWydarzenia extends JFrame{
 	
 	private OkienkoWydarzenia glowneOkno;

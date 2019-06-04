@@ -30,6 +30,9 @@ import com.toedter.calendar.JCalendar;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Klasa z glownym widokiem kalendarza, z jej poziomu uruchamiane sa pozostale okna
+ */
 public class Kalendarz extends JFrame
 {
 	private JPanel panel;
@@ -198,7 +201,7 @@ public class Kalendarz extends JFrame
 //        dni.dodaj(d2);
 //        dni.dodaj(d3);
 		Alarmy alarmy = new AlarmyGraficzne(dni);
-//        alarmy.powiadom();
+        alarmy.powiadom();
 
 		calendar = new JCalendar();
 		calendar.getDayChooser().setWeekOfYearVisible(false);

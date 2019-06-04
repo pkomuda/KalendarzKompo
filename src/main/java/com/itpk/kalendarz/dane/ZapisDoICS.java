@@ -10,16 +10,33 @@ import java.util.UUID;
 import com.itpk.kalendarz.logika.RepozytoriumDni;
 import com.itpk.kalendarz.logika.Wydarzenie;
 
+/**
+ * Klasa do zapisu wydarzen w standardowym formacie ics
+ */
 public class ZapisDoICS
-{	
+{
+	/**
+	 * Obecna data
+	 */
 	private Calendar teraz;
+	/**
+	 * Wszystkie dni
+	 */
 	private RepozytoriumDni dni;
-	
+
+	/**
+	 * Konstruktor
+	 * @param dni Lista dni
+	 */
 	public ZapisDoICS(RepozytoriumDni dni)
 	{
 		this.dni = dni;
 	}
-	
+
+	/**
+	 * Metoda zapisujaca wszystkie wydarzenia z kalendarza do pliku
+	 * @param nazwaPliku Nazwa pliku do zapisu
+	 */
 	public void zapisz(String nazwaPliku)
     {
         try (BufferedWriter w = new BufferedWriter(new FileWriter("./" + nazwaPliku + ".ics")))

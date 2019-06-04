@@ -10,6 +10,9 @@ import com.itpk.kalendarz.prezentacja.Dzwieki;
 import com.itpk.kalendarz.logika.SprWydarzen;
 import com.itpk.kalendarz.logika.Wydarzenie;
 
+/**
+ * Klasa odpowiadajaca za powiadamianie uzytkownika o nadchodzacych wydarzeniach w GUI
+ */
 public class SprWydarzenGraficzne extends SprWydarzen
 {
 	public SprWydarzenGraficzne(RepozytoriumDni dni, Calendar kiedy, int zaIle)
@@ -17,6 +20,10 @@ public class SprWydarzenGraficzne extends SprWydarzen
 		super(dni, kiedy, zaIle);
 	}
 
+	/**
+	 * Metoda wydajaca sygnal dzwiekowy i wyskakujace okienko dla nadchodzacego wydarzenia
+	 * @param w O jakim wydarzeniu powiadomic
+	 */
 	@Override
 	public void powiadomienie(Wydarzenie w)
 	{

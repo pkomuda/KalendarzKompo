@@ -11,6 +11,9 @@ import com.itpk.kalendarz.logika.ComparatorPoDacie;
 import com.itpk.kalendarz.logika.Przypomnienie;
 import com.itpk.kalendarz.logika.Wydarzenie;
 
+/**
+ * Klasa z oknem do edytowania szczegolow wydarzenia
+ */
 public class EdycjaWydarzenia extends UstawieniaWydarzenia
 {
 	OkienkoWydarzenia glowneOkno;

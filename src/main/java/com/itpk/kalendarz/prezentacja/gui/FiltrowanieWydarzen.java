@@ -16,6 +16,9 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Klasa z oknem do wyszukiwania wydarzen o danym opisie/miejscu
+ */
 public class FiltrowanieWydarzen extends JFrame
 {
 	private JPanel panel;

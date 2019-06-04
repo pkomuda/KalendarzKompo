@@ -3,6 +3,9 @@ package com.itpk.kalendarz.prezentacja.gui;
 import com.itpk.kalendarz.logika.Alarmy;
 import com.itpk.kalendarz.logika.RepozytoriumDni;
 
+/**
+ * Klasa sprawdzajaca, czy nie dodano nowego (nadchodzacego) wydarzenia w GUI
+ */
 public class AlarmyGraficzne extends Alarmy
 {	
 	public AlarmyGraficzne(RepozytoriumDni dni)

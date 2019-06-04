@@ -11,6 +11,9 @@ import javax.swing.DefaultListModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Klasa z oknem do wprowadzania szczegolow wydarzenia
+ */
 public class DodanieWydarzenia extends UstawieniaWydarzenia {
 
 	OkienkoWydarzenia glowneOkno;

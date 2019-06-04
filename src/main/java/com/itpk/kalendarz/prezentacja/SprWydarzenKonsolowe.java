@@ -14,6 +14,10 @@ public class SprWydarzenKonsolowe extends SprWydarzen
 		super(dni, kiedy, zaIle);
 	}
 
+	/**
+	 * Metoda wydajaca sygnal dzwiekowy i komunikat w konsoli dla nadchodzacego wydarzenia
+	 * @param w O jakim wydarzeniu powiadomic
+	 */
 	@Override
 	public void powiadomienie(Wydarzenie w)
 	{

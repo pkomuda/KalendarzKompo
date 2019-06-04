@@ -23,6 +23,9 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Klasa z oknem wyswietlajacym liste wydarzen z wybranego dnia
+ */
 public class OkienkoWydarzenia extends JFrame
 {
 	private Kalendarz glowneOkno;
@@ -37,16 +40,14 @@ public class OkienkoWydarzenia extends JFrame
 	public OkienkoWydarzenia(Kalendarz glowneOkno)
 	{
 		this.glowneOkno = glowneOkno;
-		
-		/***********Okno dnia**************/
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 400, 600);
 		panel = new JPanel();
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		panel.setLayout(new BorderLayout(0, 0));
 		setContentPane(panel);
-		
-		/***********Naglowek*****************/
+
 		naglowek = new JLabel("naglowek");
 		naglowek.setFont(new Font("Lucida Grande", Font.BOLD, 24));
         naglowek.setText("Wydarzenia z dnia " + RepozytoriumDni.dodajZero(glowneOkno.getDzienMiesiaca()) + "." + RepozytoriumDni.dodajZero(glowneOkno.getData().get(Calendar.MONTH)+1) + "." + glowneOkno.getData().get(Calendar.YEAR));
@@ -54,8 +55,7 @@ public class OkienkoWydarzenia extends JFrame
 		
 		obecna = new GregorianCalendar();
         obecna.set(glowneOkno.getData().get(Calendar.YEAR), glowneOkno.getData().get(Calendar.MONTH), glowneOkno.getDzienMiesiaca());
-        
-        /***************Lista wydarzeń***************/
+
         DefaultListModel<String> listModel = new DefaultListModel<>();
         List<Wydarzenie> temp;
 		try
@@ -106,8 +106,7 @@ public class OkienkoWydarzenia extends JFrame
 		
 		panelPrzyciski = new JPanel();
 		panel.add(panelPrzyciski, BorderLayout.SOUTH);
-		
-		/*********Dodanie wydarzenia*********/
+
 		dodajPrzycisk = new JButton("Dodaj");
 		dodajPrzycisk.addMouseListener(new MouseAdapter()
 		{
@@ -120,8 +119,7 @@ public class OkienkoWydarzenia extends JFrame
 			}
 		});
 		panelPrzyciski.add(dodajPrzycisk);
-		
-		/*******Usuniecie wydarzenia********/
+
 		usunPrzycisk = new JButton("Usuń");
 		usunPrzycisk.addMouseListener(new MouseAdapter()
 		{

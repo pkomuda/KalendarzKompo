@@ -4,15 +4,45 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Timer;
 
+/**
+ * Klasa abstrakcyjna, ktora odpowiada za sprawdzanie, czy nie dodano nowego wydarzenia
+ */
 public abstract class Alarmy
 {
+	/**
+	 * Obecna data + godzina
+	 */
 	protected Calendar zaGodzine;
+
+	/**
+	 * Obecna data + dzien
+	 */
 	protected Calendar jutro;
+
+	/**
+	 * Obecna data + tydzien
+	 */
 	protected Calendar zaTydzien;
+
+	/**
+	 * Obecna data
+	 */
 	protected Calendar teraz;
+
+	/**
+	 * Obiekt timer majacy za zadanie wykrywanie nowych wydarzen
+	 */
 	protected Timer timer;
+
+	/**
+	 * Wszystkie dni
+	 */
 	protected RepozytoriumDni dni;
-	
+
+	/**
+	 * Konstruktor
+	 * @param dni Repozytorium dni
+	 */
 	public Alarmy(RepozytoriumDni dni)
 	{	
 		this.dni = dni;
@@ -31,9 +61,16 @@ public abstract class Alarmy
 		timer = new Timer();
 		teraz = new GregorianCalendar();
 	}
-	
+
+	/**
+	 * Metoda abstrakcyjna odpowiedzialna za powiadomienia
+	 */
 	public abstract void powiadom();
-	
+
+	/**
+	 * Ustaw czas dla danego dnia na 00:00:00
+	 * @param kiedy Dla jakiego dnia
+	 */
 	private void setCzasNaZero(Calendar kiedy)
 	{
 		kiedy.set(Calendar.HOUR_OF_DAY, 0);

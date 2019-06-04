@@ -12,8 +12,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Klasa do odczytu wydarzen z pliku xml
+ */
 public class OdczytXML
 {
+    /**
+     * Metoda czytajaca wydarzenia z pliku xml
+     * @param sciezka Sciezka do pliku
+     * @return Lista wydarzen
+     * @throws NieprawidlowyXMLWyjatek Gdy plik nie bedzie zawieral zserializowanych wydarzen
+     */
     public List<Wydarzenie> czytaj(String sciezka) throws NieprawidlowyXMLWyjatek
     {
         File plik = new File(sciezka);

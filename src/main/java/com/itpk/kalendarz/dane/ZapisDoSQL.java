@@ -5,14 +5,24 @@ import com.itpk.kalendarz.logika.Wydarzenie;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * Klasa do zapisu wydarzen w bazie danych
+ */
 public class ZapisDoSQL extends KomunikacjaSQL
 {
+    /**
+     * Konstruktor
+     */
     public ZapisDoSQL()
     {
         super();
         stworzTabele();
     }
 
+    /**
+     * Metoda tworzy tabele, jezeli baza danych jest pusta
+     * @return Zwraca true/false w zaleznosci od tego, czy operacja sie powiodla
+     */
     public boolean stworzTabele()
     {
         String createCzytelnicy = "CREATE TABLE IF NOT EXISTS wydarzenia (opis text, miejsce text, data text, przypomnienie text)";
@@ -29,6 +39,11 @@ public class ZapisDoSQL extends KomunikacjaSQL
         return true;
     }
 
+    /**
+     * Metoda dodajaca pojedyncze wydarzenie do bazy danych (INSERT)
+     * @param w Ktore wydarzenie
+     * @return Zwraca true/false w zaleznosci od tego, czy operacja sie powiodla
+     */
     public boolean dodajWydarzenie(Wydarzenie w) {
         try {
             PreparedStatement przygZapytanie = polaczenie.prepareStatement(

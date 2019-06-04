@@ -17,6 +17,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.NumberFormat;
 
+/**
+ * Klasa z oknem do usuniecia wydarzenia o podanych parametrach
+ */
 public class UsuniecieWydarzenia extends JFrame
 {
 	private JPanel panel;

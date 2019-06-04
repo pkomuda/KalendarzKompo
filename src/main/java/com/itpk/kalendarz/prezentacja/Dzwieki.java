@@ -5,6 +5,9 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
+/**
+ * Klasa umozliwiajaca wydawanie sygnalow dzwiekowych
+ */
 public class Dzwieki
 {
     public static float CZESTOTLIWOSC_PROBKOWANIA = 8000f;

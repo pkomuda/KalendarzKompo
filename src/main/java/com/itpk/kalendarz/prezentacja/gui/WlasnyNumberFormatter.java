@@ -5,6 +5,9 @@ import java.text.ParseException;
 
 import javax.swing.text.NumberFormatter;
 
+/**
+ * Klasa stosowana przy JFormattedTextField umozliwiajaca usuniecie pojedynczego znaku
+ */
 class WlasnyNumberFormatter extends NumberFormatter
 {
 	public WlasnyNumberFormatter(NumberFormat format)

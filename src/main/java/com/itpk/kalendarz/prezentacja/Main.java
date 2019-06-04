@@ -11,8 +11,15 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
+/**
+ * Glowna klasa aplikacji
+ */
 public class Main
 {
+    /**
+     * Metoda uruchamiajaca interfejs graficzny lub linie polecen w zaleznosci od argumentu uruchomienia programu
+     * @param args Argumenty uruchomienia programu
+     */
     public static void main(String[] args)
     {
         if (args.length==1 && (args[0].equalsIgnoreCase("c")))

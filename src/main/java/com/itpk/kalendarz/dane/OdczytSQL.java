@@ -10,13 +10,23 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+/**
+ * Klasa do oczytu wydarzen z bazy danych
+ */
 public class OdczytSQL extends KomunikacjaSQL
 {
+    /**
+     * Konstruktor
+     */
     public OdczytSQL()
     {
         super();
     }
 
+    /**
+     * Metoda czytajaca wydarzenia z bazy danych
+     * @return Lista wydarzen odczytanych z bazy danych
+     */
     public List<Wydarzenie> czytajWydarzenia()
     {
         List<Wydarzenie> wydarzenia = new ArrayList<>();
@@ -41,6 +51,11 @@ public class OdczytSQL extends KomunikacjaSQL
         return wydarzenia;
     }
 
+    /**
+     * Metoda konwertujaca date
+     * @param data Data odczytana z bazy danych jako string
+     * @return Obiekt typu GregorianCalendar
+     */
     private Calendar stringNaCalendar(String data)
     {
         int rok = Integer.parseInt(data.substring(0,4));
