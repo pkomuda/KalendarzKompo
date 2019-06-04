@@ -7,6 +7,9 @@ import com.itpk.kalendarz.logika.Wydarzenie;
 import javax.sound.sampled.LineUnavailableException;
 import java.util.Calendar;
 
+/**
+ * Klasa odpowiadajaca za powiadamianie uzytkownika o nadchodzacych wydarzeniach w linii polecen
+ */
 public class SprWydarzenKonsolowe extends SprWydarzen
 {
 	public SprWydarzenKonsolowe(RepozytoriumDni dni, Calendar kiedy, int zaIle)

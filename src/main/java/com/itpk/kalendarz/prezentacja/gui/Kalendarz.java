@@ -57,6 +57,9 @@ public class Kalendarz extends JFrame
 	private JMenuItem zXML;
 	boolean wPanelu = false;
 
+	/**
+	 * Konstruktor
+	 */
 	public Kalendarz()
 	{
 		setTitle("Kalendarz");
@@ -231,18 +234,30 @@ public class Kalendarz extends JFrame
 			});
 		}
 	}
-	
+
+	/**
+	 * Metoda zwracajaca date typu Calendar
+	 * @return Data typu Calendar
+	 */
 	public Calendar getData()
     {
         return data;
     }
 
-    public int getDzienMiesiaca()
+	/**
+	 * Metoda zwracajaca numer dnia miesiaca
+	 * @return Numer dnia miesiaca
+	 */
+	public int getDzienMiesiaca()
     {
         return dzienMiesiaca;
     }
 
-    public RepozytoriumDni getDni()
+	/**
+	 * Metoda zwracajaca repozytorium dni
+	 * @return Repozytorium dni
+	 */
+	public RepozytoriumDni getDni()
     {
         return dni;
     }

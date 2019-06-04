@@ -37,6 +37,10 @@ public class OkienkoWydarzenia extends JFrame
 	private JButton usunPrzycisk;
 	private JButton dodajPrzycisk;
 
+	/**
+	 * Konstruktor
+	 * @param glowneOkno Okno kalendarza, z poziomu ktorego tworzone jest obecne okno
+	 */
 	public OkienkoWydarzenia(Kalendarz glowneOkno)
 	{
 		this.glowneOkno = glowneOkno;
@@ -137,29 +141,40 @@ public class OkienkoWydarzenia extends JFrame
 		});
 		panelPrzyciski.add(usunPrzycisk);
 	}
-	
+
+	/**
+	 * Metoda zwracajaca JList
+	 * @return JList
+	 */
 	public JList getList()
 	{
 		return list;
 	}
-	
+
+	/**
+	 * Metoda zwracajaca obecne okno
+	 * @return Obecne okno
+	 */
 	public OkienkoWydarzenia getThis()
 	{
 		return this;
 	}
-	
+
+	/**
+	 * Metoda zwracajaca okno kalendaraa
+	 * @return Okno kalendarza
+	 */
 	public Kalendarz getKalendarz()
 	{
 		return glowneOkno;
 	}
-	
+
+	/**
+	 * Metoda zwracajaca obecna date typu Calendar
+	 * @return obecna data typu Calendar
+	 */
 	public Calendar getObecna() {
 		return obecna;
-	}
-	
-	public JPanel getPanel()
-	{
-		return panel;
 	}
 	
 	private int getDzienMiesiaca(Calendar calendar)
@@ -176,8 +191,12 @@ public class OkienkoWydarzenia extends JFrame
     {
         return calendar.get(Calendar.YEAR);
     }
-    
-    public Wydarzenie zaznaczoneWydarzenie() 
+
+	/**
+	 * Metoda zwracajaca zaznaczone wydarzenie
+	 * @return Zaznaczone wydarzenie
+	 */
+	public Wydarzenie zaznaczoneWydarzenie()
     {
     	return glowneOkno.getDni().getDzien(obecna).getLista().get(list.getSelectedIndex());
     }
