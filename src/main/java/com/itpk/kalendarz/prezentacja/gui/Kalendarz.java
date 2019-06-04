@@ -2,6 +2,7 @@ package com.itpk.kalendarz.prezentacja.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.util.Calendar;
 
 import javax.swing.JColorChooser;
@@ -51,22 +52,23 @@ public class Kalendarz extends JFrame
 	private JMenuItem doBazy;
 	private JMenuItem doXML;
 	private JMenuItem zXML;
+	boolean wPanelu = false;
 
 	public Kalendarz()
 	{
 		setTitle("Kalendarz");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 400);
-		
+
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		
+
 		plik = new JMenu("Plik");
 		menuBar.add(plik);
-		
+
 		importuj = new JMenu("Importuj...");
 		plik.add(importuj);
-		
+
 		zBazy = new JMenuItem("Z bazy danych");
 		zBazy.addActionListener(e ->
 		{
@@ -78,7 +80,7 @@ public class Kalendarz extends JFrame
 			}
 		});
 		importuj.add(zBazy);
-		
+
 		zXML = new JMenuItem("Z .xml");
 		zXML.addActionListener(e ->
 		{
@@ -92,25 +94,24 @@ public class Kalendarz extends JFrame
 				try
 				{
 					dni.dodajWszystkieWydarzenia(odczytXML.czytaj(wyborPliku.getSelectedFile().toString()));
-				}
-				catch (NieprawidlowyXMLWyjatek ex)
+				} catch (NieprawidlowyXMLWyjatek ex)
 				{
 					JOptionPane.showMessageDialog(null, "Nieprawidłowy plik", "", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});
 		importuj.add(zXML);
-		
+
 		eksportuj = new JMenu("Eksportuj...");
 		plik.add(eksportuj);
-		
+
 		doICS = new JMenuItem("Do .ics");
 		doICS.addActionListener(e ->
 		{
 			zapisDoICS = new ZapisDoICS(dni);
 			zapisDoICS.zapisz("eksport");
 		});
-		
+
 		doBazy = new JMenuItem("Do bazy danych");
 		doBazy.addActionListener(e ->
 		{
@@ -125,7 +126,7 @@ public class Kalendarz extends JFrame
 				JOptionPane.showMessageDialog(null, "Eksportowanie zakończone pomyślnie.", "", JOptionPane.INFORMATION_MESSAGE);
 		});
 		eksportuj.add(doBazy);
-		
+
 		doXML = new JMenuItem("Do .xml");
 		doXML.addActionListener(e ->
 		{
@@ -137,7 +138,7 @@ public class Kalendarz extends JFrame
 		});
 		eksportuj.add(doXML);
 		eksportuj.add(doICS);
-		
+
 		usuwanieWydarzen = new JMenuItem("Usuwanie wydarzeń");
 		usuwanieWydarzen.addActionListener(e ->
 		{
@@ -145,7 +146,7 @@ public class Kalendarz extends JFrame
 			usun.setLocationRelativeTo(usun);
 			usun.setVisible(true);
 		});
-		
+
 		mntmFiltrowanieWydarze = new JMenuItem("Filtrowanie wydarzeń");
 		mntmFiltrowanieWydarze.addActionListener(e ->
 		{
@@ -155,19 +156,19 @@ public class Kalendarz extends JFrame
 		});
 		plik.add(mntmFiltrowanieWydarze);
 		plik.add(usuwanieWydarzen);
-		
+
 		ustawienia = new JMenu("Ustawienia");
 		menuBar.add(ustawienia);
-		
+
 		kolory = new JMenu("Kolory");
-		JColorChooser wyborKoloru = new JColorChooser(new Color(238,238,238));
+		JColorChooser wyborKoloru = new JColorChooser(new Color(238, 238, 238));
 		wyborKoloru.getSelectionModel().addChangeListener(e ->
 		{
 			calendar.getDayChooser().getDayPanel().setBackground(wyborKoloru.getColor());
-        });
+		});
 		kolory.add(wyborKoloru.getChooserPanels()[1]);
 		ustawienia.add(kolory);
-		
+
 		info = new JMenu("O programie");
 		info.addMouseListener(new MouseAdapter()
 		{
@@ -182,7 +183,7 @@ public class Kalendarz extends JFrame
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		panel.setLayout(new BorderLayout(0, 0));
 		setContentPane(panel);
-		
+
 		dni = new RepozytoriumDni();
 //		Dzien d1 = new Dzien(29, 4, 2019);
 //		Dzien d2 = new Dzien(30, 4, 2019);
@@ -196,22 +197,48 @@ public class Kalendarz extends JFrame
 //        dni.dodaj(d1);
 //        dni.dodaj(d2);
 //        dni.dodaj(d3);
-        Alarmy alarmy = new AlarmyGraficzne(dni);
+		Alarmy alarmy = new AlarmyGraficzne(dni);
 //        alarmy.powiadom();
-        
+
 		calendar = new JCalendar();
 		calendar.getDayChooser().setWeekOfYearVisible(false);
 		calendar.getDayChooser().setAlwaysFireDayProperty(true);
 		calendar.getDayChooser().addPropertyChangeListener("day", e ->
 		{
 			data = calendar.getCalendar();
-			dzienMiesiaca = (int)e.getNewValue();
+			dzienMiesiaca = (int) e.getNewValue();
 			data.set(Calendar.DAY_OF_MONTH, dzienMiesiaca);
-            OkienkoWydarzenia okienko = new OkienkoWydarzenia(this);
-            okienko.setLocationRelativeTo(okienko);
-            okienko.setVisible(true);
+			if (wPanelu)
+			{
+				wPanelu = false;
+				OkienkoWydarzenia okienko = new OkienkoWydarzenia(this);
+				okienko.setLocationRelativeTo(okienko);
+				okienko.setVisible(true);
+			}
 		});
 		panel.add(calendar, BorderLayout.CENTER);
+
+		JPanel panelTemp = calendar.getDayChooser().getDayPanel();
+		Component komponenty[] = panelTemp.getComponents();
+		for (int i = 0; i < komponenty.length; i++)
+		{
+			komponenty[i].addMouseListener(new MouseAdapter()
+			{
+				@Override
+				public void mousePressed(MouseEvent mouseEvent)
+				{
+					super.mouseEntered(mouseEvent);
+					wPanelu = true;
+				}
+
+				@Override
+				public void mouseExited(MouseEvent mouseEvent)
+				{
+					super.mouseExited(mouseEvent);
+					wPanelu = false;
+				}
+			});
+		}
 	}
 	
 	public Calendar getData()

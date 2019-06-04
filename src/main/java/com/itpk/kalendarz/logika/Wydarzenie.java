@@ -235,13 +235,13 @@ public class Wydarzenie
     	switch(przypomnienie)
     	{
     	case DZIEN_PRZED:
-    		return "Jutro o "+ toString();
+    		return "Jutro "+ toString();
     		
     	case GODZINA_PRZED:
-    		return "Dzisiaj o "+ toString();
+    		return "Dzisiaj "+ toString();
     		
     	case TYDZIEN_PRZED:
-    		return "Za tydzien o "+ toString();
+    		return "Za tydzien "+ toString();
     	default:
     		return toString();
     	}
