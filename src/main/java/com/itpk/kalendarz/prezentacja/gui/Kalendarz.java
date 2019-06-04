@@ -188,18 +188,6 @@ public class Kalendarz extends JFrame
 		setContentPane(panel);
 
 		dni = new RepozytoriumDni();
-//		Dzien d1 = new Dzien(29, 4, 2019);
-//		Dzien d2 = new Dzien(30, 4, 2019);
-//		Dzien d3 = new Dzien(5, 5, 2019);
-//		Wydarzenie w1 = new Wydarzenie("Spotkanie - za godzine", "Łódź", new GregorianCalendar(2019, 4, 29),16,00,Przypomnienie.GODZINA_PRZED);
-//		Wydarzenie w2 = new Wydarzenie("Spotkanie - jutro", "Łódź", new GregorianCalendar(2019, 4, 30),23, 13);
-//		Wydarzenie w3 = new Wydarzenie("Spotkanie - za tydzień", "Łódź", new GregorianCalendar(2019,5,5),12,00,Przypomnienie.TYDZIEN_PRZED);
-//		d1.dodaj(w1);
-//		d2.dodaj(w2);
-//		d3.dodaj(w3);
-//        dni.dodaj(d1);
-//        dni.dodaj(d2);
-//        dni.dodaj(d3);
 		Alarmy alarmy = new AlarmyGraficzne(dni);
         alarmy.powiadom();
 
