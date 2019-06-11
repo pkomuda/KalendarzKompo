@@ -3,9 +3,12 @@ package com.itpk.kalendarz.prezentacja.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.util.Calendar;
 
 import javax.swing.JColorChooser;
+import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -13,6 +16,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -233,6 +237,11 @@ public class Kalendarz extends JFrame
 				}
 			});
 		}
+
+		panel.registerKeyboardAction(mntmFiltrowanieWydarze.getActionListeners()[0],
+									 KeyStroke.getKeyStroke(KeyEvent.VK_F,
+									 Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()),
+									 JComponent.WHEN_IN_FOCUSED_WINDOW);
 	}
 
 	/**
